@@ -13,3 +13,7 @@ desktop.ini
 *.log
 *.tmp
 *.bak
+
+# Non-theme assets (keep locally, ignore from Shopify GitHub sync)
+branding guide/
+*.zip
