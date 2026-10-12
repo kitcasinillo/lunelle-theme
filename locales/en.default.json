@@ -1,0 +1,63 @@
+{
+  "general": {
+    "accessibility": {
+      "close": "Close",
+      "skip_to_text": "Skip to content",
+      "menu": "Menu",
+      "search": "Search"
+    },
+    "meta": {
+      "page": "Page {{ page }}",
+      "tags": "Tagged \"{{ tags }}\""
+    },
+    "continue_shopping": "Continue Exploring",
+    "search": {
+      "search": "Search our rituals...",
+      "title": "Search",
+      "no_results": "No pieces found for \"{{ terms }}\". May we invite you to explore our core collection?"
+    }
+  },
+  "sections": {
+    "header": {
+      "announcement": "Every piece reminds you that you, too, deserve beauty. Complimentary domestic delivery on orders over ₱3,500."
+    },
+    "cart": {
+      "title": "Your Private Bag",
+      "subtotal": "Subtotal",
+      "taxes_and_shipping_policy_at_checkout_html": "Taxes and shipping calculated at checkout.",
+      "checkout": "Proceed to Checkout",
+      "empty": "Your bag is waiting. Treat yourself to a moment of softness.",
+      "explore": "Explore the Collection",
+      "gift_note_label": "Include a Whisper Note to Yourself",
+      "gift_note_placeholder": "Write a note of kindness, self-reclamation, or care to be nestled into your package...",
+      "free_shipping_progress": "Add {{ amount }} more to unlock complimentary domestic care delivery",
+      "free_shipping_achieved": "Complimentary domestic care delivery unlocked"
+    },
+    "featured_collection": {
+      "view_all": "Explore All Pieces"
+    },
+    "footer": {
+      "brand_statement": "To remind women, especially those who give so much to others, that they, too, deserve beauty, softness, and care.",
+      "newsletter_title": "Notes on Softness",
+      "newsletter_subtext": "A quiet letter delivered gently to your inbox. No noise, just rituals of care and early access.",
+      "newsletter_button": "Begin here",
+      "newsletter_placeholder": "Your email address",
+      "all_rights_reserved": "All rights reserved. Designed for quiet confidence."
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Keep for Yourself",
+      "sold_out": "Currently Resting",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity",
+      "size": "Size",
+      "color": "Tone",
+      "details": "Details & Materials",
+      "care": "Ritual & Care Guide",
+      "packaging": "The Unboxing Ritual",
+      "packaging_description": "Arrives nestled in our signature soft nude box wrapped in cocoa ribbon, carrying the whisper: 'You remembered yourself today. This piece is yours.'",
+      "share": "Share tenderly"
+    }
+  }
+}

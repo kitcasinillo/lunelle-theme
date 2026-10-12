@@ -1,0 +1,121 @@
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="header-container">
+      <!-- Mobile Toggle -->
+      <button type="button" class="mobile-nav-toggle" aria-label="{{ 'general.accessibility.menu' | t }}">
+        {% render 'icon-menu' %}
+      </button>
+
+      <!-- Desktop Nav -->
+      <nav class="header-nav" role="navigation">
+        {%- for link in linklists[section.settings.menu].links -%}
+          <a href="{{ link.url }}" class="{% if link.active %}active{% endif %}">{{ link.title }}</a>
+        {%- else -%}
+          <a href="/collections/all">The Collection</a>
+          <a href="/pages/our-story">Our Story</a>
+          <a href="/pages/motherhood-rituals">Motherhood Edit</a>
+          <a href="/pages/size-guide">Fit & Rituals</a>
+        {%- endfor -%}
+      </nav>
+
+      <!-- Brand Logo -->
+      <div class="header-logo">
+        <a href="{{ routes.root_url }}" aria-label="Lunelle Home">
+          {%- if section.settings.custom_logo != blank -%}
+            <img src="{{ section.settings.custom_logo | image_url: width: 360 }}" alt="{{ shop.name }}" width="{{ section.settings.logo_width | default: 180 }}" height="52">
+          {%- else -%}
+            <img src="{{ 'lunelle-logo-taupe.svg' | asset_url }}" alt="LUNELLE" width="{{ section.settings.logo_width | default: 180 }}" height="52" style="height: 52px; width: auto;">
+          {%- endif -%}
+        </a>
+      </div>
+
+      <!-- Action Icons -->
+      <div class="header-actions">
+        <a href="{{ routes.search_url }}" class="header-action-btn" aria-label="{{ 'general.accessibility.search' | t }}">
+          {% render 'icon-search' %}
+        </a>
+
+        {%- if shop.customer_accounts_enabled -%}
+          <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="header-action-btn" aria-label="Account">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"></circle><path d="M6 20v-2a6 6 0 0 1 12 0v2"></path></svg>
+          </a>
+        {%- endif -%}
+
+        <button type="button" class="header-action-btn" data-cart-drawer-trigger aria-label="{{ 'sections.cart.title' | t }}">
+          {% render 'icon-cart' %}
+          <span class="cart-count-badge" data-cart-count>{{ cart.item_count }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation Drawer -->
+<div class="mobile-menu-drawer" role="dialog" aria-modal="true" aria-label="Navigation Menu">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-header">
+      <div style="display: flex; align-items: center; gap: 0.65rem;">
+        {% render 'icon-lotus', width: 24, height: 24, color: '#6B5448' %}
+        <span style="font-family: var(--font-heading); font-size: 0.95rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-cocoa-taupe); font-weight: 700;">{{ shop.name }}</span>
+      </div>
+      <button type="button" class="mobile-menu-close" aria-label="{{ 'general.accessibility.close' | t | default: 'Close' }}">
+        {% render 'icon-close' %}
+      </button>
+    </div>
+
+    <nav class="mobile-menu-nav" role="navigation">
+      {%- for link in linklists[section.settings.menu].links -%}
+        <a href="{{ link.url }}" class="{% if link.active %}active{% endif %}">{{ link.title }}</a>
+      {%- else -%}
+        <a href="/collections/all" class="active">The Collection</a>
+        <a href="/pages/our-story">Our Story</a>
+        <a href="/pages/motherhood-rituals">Motherhood Edit</a>
+        <a href="/pages/size-guide">Fit & Rituals</a>
+      {%- endfor -%}
+    </nav>
+
+    <div class="mobile-menu-footer">
+      <p>"Softness, Reclaimed. Every piece reminds you that you, too, deserve beauty."</p>
+      <div class="mobile-menu-socials">
+        {%- if settings.social_instagram_link != blank -%}
+          <a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener">Instagram</a>
+        {%- endif -%}
+        {%- if settings.social_facebook_link != blank -%}
+          <a href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener">Facebook</a>
+        {%- endif -%}
+        {%- if settings.social_tiktok_link != blank -%}
+          <a href="{{ settings.social_tiktok_link }}" target="_blank" rel="noopener">TikTok</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "custom_logo",
+      "label": "Custom Logo Image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 100,
+      "max": 260,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo Width",
+      "default": 180
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

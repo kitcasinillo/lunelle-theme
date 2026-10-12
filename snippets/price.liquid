@@ -1,0 +1,36 @@
+{% comment %}
+  Renders product price
+  Accepts:
+  - product: {Object} Product Liquid object
+  - use_variant: {Boolean} Renders selected or first available variant price
+  - price_class: {String} Adds a price class to the price element
+{% endcomment %}
+
+{%- liquid
+  if use_variant
+    assign target = product.selected_or_first_available_variant
+  else
+    assign target = product
+  endif
+
+  assign compare_at_price = target.compare_at_price
+  assign price = target.price | default: 285000
+  assign available = target.available | default: true
+-%}
+
+<div class="price {% if price_class %}{{ price_class }}{% endif %}">
+  <div class="price__container">
+    {%- if compare_at_price > price -%}
+      <span class="price-item price-item--regular" style="text-decoration: line-through; opacity: 0.6; margin-right: 0.5rem;">
+        {{ compare_at_price | money }}
+      </span>
+      <span class="price-item price-item--sale">
+        {{ price | money }}
+      </span>
+    {%- else -%}
+      <span class="price-item price-item--regular">
+        {{ price | money }}
+      </span>
+    {%- endif -%}
+  </div>
+</div>

@@ -1,0 +1,131 @@
+<section class="product-detail-section" id="MainProduct-{{ section.id }}" data-section="{{ section.id }}">
+  <div class="container">
+    <div class="product-detail-grid">
+      <!-- Media Gallery -->
+      <div class="product-gallery">
+        <div class="product-main-image">
+          {%- assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+          {%- if featured_media -%}
+            <img src="{{ featured_media | image_url: width: 1000 }}" alt="{{ product.title | escape }}" id="ProductMainImage-{{ section.id }}" width="1000" height="1333">
+          {%- else -%}
+            <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?q=80&w=1000&auto=format&fit=crop" alt="{{ product.title | default: 'The Dawn Silk Bralette' | escape }}" id="ProductMainImage-{{ section.id }}" width="1000" height="1333">
+          {%- endif -%}
+        </div>
+
+        {%- if product.media.size > 1 -%}
+          <div class="product-thumb-row">
+            {%- for media in product.media limit: 4 -%}
+              <div class="product-thumb {% if forloop.first %}active{% endif %}" data-full-src="{{ media | image_url: width: 1000 }}">
+                <img src="{{ media | image_url: width: 250 }}" alt="{{ media.alt | default: product.title | escape }}" width="250" height="250" loading="lazy">
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Product Information & Order Form -->
+      <div class="product-info-column">
+        <span class="eyebrow">The Core Self-Care Ritual</span>
+        <h1 style="margin-bottom: 0.75rem;">{{ product.title | default: "The Dawn Silk Bralette" }}</h1>
+
+        <div class="product-price-large">
+          {% render 'price', product: product, use_variant: true %}
+        </div>
+
+        <div style="font-size: 1.05rem; line-height: 1.8; color: var(--color-warm-mocha-brown); margin-bottom: 2rem;">
+          {{ product.description | default: "Designed to feel like a whisper against your skin. The Dawn Silk Bralette offers supportive wire-free architecture that honors your body's natural contours. Crafted for self-reclamation, reminding you that confidence begins within." }}
+        </div>
+
+        {% form 'product', product, id: 'product_form', class: 'product-form' %}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+          <!-- Tone / Color Swatches -->
+          <div class="variant-picker">
+            <div class="variant-label">
+              <span>Tone: <strong data-selected-label style="font-family: var(--font-heading); text-transform: none; font-size: 1rem;">Champagne Cream</strong></span>
+            </div>
+            <div class="swatch-group">
+              <button type="button" class="swatch-pill active" data-value="Champagne Cream">Champagne Cream</button>
+              <button type="button" class="swatch-pill" data-value="Soft Nude Beige">Soft Nude Beige</button>
+              <button type="button" class="swatch-pill" data-value="Dusty Rose Taupe">Dusty Rose Taupe</button>
+              <button type="button" class="swatch-pill" data-value="Cocoa Taupe">Cocoa Taupe</button>
+            </div>
+          </div>
+
+          <!-- Size Selector -->
+          <div class="variant-picker">
+            <div class="variant-label">
+              <span>Size: <strong data-selected-label style="font-family: var(--font-heading); text-transform: none; font-size: 1rem;">Small (S)</strong></span>
+              <a href="/pages/size-guide" style="text-decoration: underline; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-dusty-rose-taupe);">Size Ritual Guide</a>
+            </div>
+            <div class="swatch-group">
+              <button type="button" class="swatch-pill" data-value="XS">XS (32A-B)</button>
+              <button type="button" class="swatch-pill active" data-value="S">S (34A-C)</button>
+              <button type="button" class="swatch-pill" data-value="M">M (36A-D)</button>
+              <button type="button" class="swatch-pill" data-value="L">L (38B-D)</button>
+              <button type="button" class="swatch-pill" data-value="XL">XL (40C-DD)</button>
+            </div>
+          </div>
+
+          <!-- Quantity & Add to Cart -->
+          <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 2.5rem;">
+            <div class="quantity-stepper" style="padding: 0.45rem 0.75rem;">
+              <button type="button" onclick="this.nextElementSibling.stepDown()" aria-label="Decrease">−</button>
+              <input type="number" name="quantity" value="1" min="1" style="width: 38px; text-align: center; border: none; outline: none; background: transparent; font-family: var(--font-body); font-size: 0.95rem;">
+              <button type="button" onclick="this.previousElementSibling.stepUp()" aria-label="Increase">+</button>
+            </div>
+
+            <button type="submit" name="add" class="btn btn-primary" style="flex: 1; padding: 1.1rem 2rem;" data-cart-drawer-trigger>
+              {{ 'products.product.add_to_cart' | t }}
+            </button>
+          </div>
+        {% endform %}
+
+        <!-- Ritual Accordions -->
+        <div class="details-accordion">
+          <div class="accordion-item open">
+            <button type="button" class="accordion-trigger" aria-expanded="true">
+              <span>{{ 'products.product.details' | t }}</span>
+              {% render 'icon-chevron' %}
+            </button>
+            <div class="accordion-content">
+              <ul style="padding-left: 1.25rem; margin: 0;">
+                <li>92% Pure Mulberry Silk, 8% Elastane for tender gentle give</li>
+                <li>Completely wire-free contouring with soft microfiber band</li>
+                <li>Subtle gold-plated hardware and hypoallergenic clasps</li>
+                <li>Breathable, temperature-regulating, and soft against post-maternity skin</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>{{ 'products.product.care' | t }}</span>
+              {% render 'icon-chevron' %}
+            </button>
+            <div class="accordion-content">
+              <p>Treat your piece as a sacred item of self-care. Hand wash gently in cool water using a gentle pH-neutral silk wash. Do not wring or twist. Lay flat in a shaded space to dry naturally.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button type="button" class="accordion-trigger" aria-expanded="false">
+              <span>{{ 'products.product.packaging' | t }}</span>
+              {% render 'icon-chevron' %}
+            </button>
+            <div class="accordion-content">
+              <p>{{ 'products.product.packaging_description' | t }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Information",
+  "settings": []
+}
+{% endschema %}

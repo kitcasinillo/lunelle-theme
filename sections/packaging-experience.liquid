@@ -1,0 +1,55 @@
+<section class="packaging-section" id="packaging-{{ section.id }}">
+  <div class="container">
+    <div class="packaging-grid">
+      <div class="packaging-box-card">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+          {% render 'icon-lotus', width: 32, height: 32, color: '#6B5448' %}
+          <span style="font-family: var(--font-heading); font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-dusty-rose-taupe); font-weight: 700;">The Physical Touchpoint</span>
+        </div>
+
+        <h3 class="h2" style="margin-bottom: 1rem;">The Unboxing Whisper</h3>
+        <p style="color: var(--color-warm-mocha-brown); line-height: 1.8;">
+          Packaging is the first physical touch you have with Lunelle. Every surface—textured soft nude paper, warm mocha grosgrain ribbon, and hand-folded tissue—is created so opening it feels like a secret gift to yourself.
+        </p>
+
+        <div class="packaging-quote-card">
+          <p style="margin: 0; font-family: var(--font-heading); font-size: 1.15rem; line-height: 1.7;">
+            "You remembered yourself today. This piece is yours, not for anyone's eyes, not for any occasion. Just for the quiet knowing that you, too, deserve beauty."
+          </p>
+        </div>
+
+        <p style="font-size: 0.875rem; color: var(--color-dusty-rose-taupe); font-family: var(--font-heading); letter-spacing: 0.1em; text-transform: uppercase; margin: 0; font-weight: 700;">
+          Softness, Reclaimed. Welcome Home.
+        </p>
+      </div>
+
+      <div>
+        <div style="position: relative; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); aspect-ratio: 1; background-color: var(--color-soft-nude-beige);">
+          {%- if section.settings.image != blank -%}
+            <img src="{{ section.settings.image | image_url: width: 800 }}" alt="Lunelle Signature Packaging" style="width: 100%; height: 100%; object-fit: cover;">
+          {%- else -%}
+            <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop" alt="Luxury gift box with satin ribbon" style="width: 100%; height: 100%; object-fit: cover;">
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Packaging Experience",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Packaging Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Packaging Experience"
+    }
+  ]
+}
+{% endschema %}

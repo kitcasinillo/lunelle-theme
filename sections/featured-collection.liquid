@@ -1,0 +1,143 @@
+<section class="section-featured-collection" id="collection-{{ section.id }}">
+  <div class="container">
+    <div class="section-header-row">
+      <div>
+        <span class="eyebrow">{{ section.settings.eyebrow | default: 'The Signature Edit' }}</span>
+        <h2 class="h2" style="margin-bottom: 0.5rem;">{{ section.settings.heading | default: 'Crafted for Self-Reclamation' }}</h2>
+        <p style="max-width: 600px; margin: 0; color: var(--color-warm-mocha-brown); font-style: italic;">
+          {{ section.settings.subheading | default: 'Each piece is designed with intention: premium materials that feel like a secret against your skin, craftsmanship that honors your body, and beauty that reminds you who you are.' }}
+        </p>
+      </div>
+
+      {%- if section.settings.show_view_all -%}
+        <a href="{{ section.settings.collection.url | default: routes.all_products_collection_url }}" class="btn-link">
+          {{ 'sections.featured_collection.view_all' | t }} &rarr;
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="product-grid">
+      {%- assign products_to_show = section.settings.products_to_show | default: 4 -%}
+      {%- if section.settings.collection != blank and section.settings.collection.products_count > 0 -%}
+        {%- for product in section.settings.collection.products limit: products_to_show -%}
+          {% render 'card-product', card_product: product, show_secondary_image: true %}
+        {%- endfor -%}
+      {%- else -%}
+        <!-- Editorial Preview Mock Cards matching Lunelle Brand Palette -->
+        <div class="product-card">
+          <div class="product-card-image-box">
+            <span class="product-badge">Bestseller</span>
+            <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?q=80&w=700&auto=format&fit=crop" alt="The Dawn Silk Bralette" class="img-primary" width="700" height="933">
+            <button type="button" class="quick-add-btn" data-quick-add aria-label="Keep for Yourself">
+              {% render 'icon-cart' %}
+              <span>Keep for Yourself</span>
+            </button>
+          </div>
+          <div class="product-card-info">
+            <h3 class="product-card-title"><a href="/products/dawn-silk-bralette">The Dawn Silk Bralette</a></h3>
+            <div class="product-card-tones">Champagne Cream · Soft Nude</div>
+            <div class="product-card-price">₱3,250.00</div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-image-box">
+            <span class="product-badge">Self-Care Ritual</span>
+            <img src="https://images.unsplash.com/photo-1583209814683-c023dd293cc6?q=80&w=700&auto=format&fit=crop" alt="Solitary Bloom Lace Bodysuit" class="img-primary" width="700" height="933">
+            <button type="button" class="quick-add-btn" data-quick-add aria-label="Keep for Yourself">
+              {% render 'icon-cart' %}
+              <span>Keep for Yourself</span>
+            </button>
+          </div>
+          <div class="product-card-info">
+            <h3 class="product-card-title"><a href="/products/bloom-lace-bodysuit">Solitary Bloom Lace Bodysuit</a></h3>
+            <div class="product-card-tones">Dusty Rose Taupe · Cocoa</div>
+            <div class="product-card-price">₱4,650.00</div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-image-box">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=700&auto=format&fit=crop" alt="The Sanctuary Soft Robe" class="img-primary" width="700" height="933">
+            <button type="button" class="quick-add-btn" data-quick-add aria-label="Keep for Yourself">
+              {% render 'icon-cart' %}
+              <span>Keep for Yourself</span>
+            </button>
+          </div>
+          <div class="product-card-info">
+            <h3 class="product-card-title"><a href="/products/sanctuary-robe">The Sanctuary Silk Robe</a></h3>
+            <div class="product-card-tones">Champagne Cream</div>
+            <div class="product-card-price">₱5,800.00</div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-image-box">
+            <span class="product-badge">Motherhood Edit</span>
+            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=700&auto=format&fit=crop" alt="Grounded Whispers Wireless Bra" class="img-primary" width="700" height="933">
+            <button type="button" class="quick-add-btn" data-quick-add aria-label="Keep for Yourself">
+              {% render 'icon-cart' %}
+              <span>Keep for Yourself</span>
+            </button>
+          </div>
+          <div class="product-card-info">
+            <h3 class="product-card-title"><a href="/products/whispers-wireless-bra">Whispers Wireless Soft Bra</a></h3>
+            <div class="product-card-tones">Warm Mocha · Soft Nude</div>
+            <div class="product-card-price">₱2,850.00</div>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Signature Edit"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Crafted for Self-Reclamation"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Each piece is designed with intention: premium materials that feel like a secret against your skin, craftsmanship that honors your body, and beauty that reminds you who you are."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "label": "Products to show",
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'Explore All Pieces' link",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,39 @@
+{
+  "sections": {
+    "story": {
+      "type": "brand-story",
+      "settings": {
+        "eyebrow": "Our Sacred Mission",
+        "heading": "For the Woman Behind Every Role",
+        "body_text": "LUNELLE exists to remind you that you deserve beauty, not for anyone else's gaze, but for the quiet confidence it brings when you choose yourself. For the woman who gives her best to everyone else, LUNELLE honors her right to feel beautiful for herself. We believe confidence begins within, and luxury is an act of self-care, not performance."
+      }
+    },
+    "image_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "image_first",
+        "bg_secondary": false,
+        "eyebrow": "The Motherhood Journey",
+        "heading": "Motherhood changes everything, except the woman you are beneath it all.",
+        "button_label": "Explore the Collection"
+      }
+    },
+    "quote": {
+      "type": "editorial-quote",
+      "settings": {
+        "quote": "Every piece reminds you that you, too, deserve beauty.",
+        "author": "The Lunelle Promise"
+      }
+    },
+    "packaging": {
+      "type": "packaging-experience",
+      "settings": {}
+    }
+  },
+  "order": [
+    "story",
+    "image_text",
+    "quote",
+    "packaging"
+  ]
+}

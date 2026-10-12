@@ -1,0 +1,40 @@
+<section class="editorial-quote-section" id="quote-{{ section.id }}">
+  <div class="container container-narrow">
+    <div style="margin-bottom: 1.5rem;">
+      {% render 'icon-lotus', width: 38, height: 38, color: '#B9968A' %}
+    </div>
+
+    <blockquote class="editorial-quote-text">
+      "{{ section.settings.quote | default: 'Lingerie that feels like a secret gift to yourself.' }}"
+    </blockquote>
+
+    <cite class="editorial-quote-author">
+      {{ section.settings.author | default: 'The Lunelle Philosophy' }}
+    </cite>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Editorial Pull Quote",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote Text",
+      "default": "Lingerie that feels like a secret gift to yourself."
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "Author / Attribute",
+      "default": "The Lunelle Philosophy"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Editorial Pull Quote"
+    }
+  ]
+}
+{% endschema %}

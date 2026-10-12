@@ -1,0 +1,72 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "eyebrow": "The Self-Care Ritual",
+        "heading": "Softness, Reclaimed",
+        "subheading": "Luxury lingerie for the woman who gives her best to everyone else and deserves to keep something beautiful for herself.",
+        "button_label": "Explore the Collection",
+        "secondary_button_label": "Our Story"
+      }
+    },
+    "brand_story": {
+      "type": "brand-story",
+      "settings": {
+        "eyebrow": "Our Brand Foundation",
+        "heading": "For the Woman Behind Every Role",
+        "body_text": "LUNELLE exists to remind you that you deserve beauty, not for anyone else's gaze, but for the quiet confidence it brings when you choose yourself. For the woman who gives her best to everyone else, LUNELLE honors her right to feel beautiful for herself. We believe confidence begins within, and luxury is an act of self-care, not performance.",
+        "button_label": "Read Our Complete Story"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "The Signature Edit",
+        "heading": "Crafted for Self-Reclamation",
+        "subheading": "Each piece is designed with intention: premium materials that feel like a secret against your skin, craftsmanship that honors your body, and beauty that reminds you who you are.",
+        "products_to_show": 4,
+        "show_view_all": true
+      }
+    },
+    "editorial_quote": {
+      "type": "editorial-quote",
+      "settings": {
+        "quote": "Lingerie that feels like a secret gift to yourself.",
+        "author": "The Lunelle Philosophy"
+      }
+    },
+    "image_with_text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "image_first",
+        "bg_secondary": false,
+        "eyebrow": "The Motherhood Journey",
+        "heading": "Motherhood changes everything, except the woman you are beneath it all.",
+        "button_label": "Explore the Motherhood Edit"
+      }
+    },
+    "packaging": {
+      "type": "packaging-experience",
+      "settings": {}
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "An Intimate Dispatch",
+        "heading": "Notes on Softness",
+        "subheading": "A quiet letter delivered gently to your inbox. No promotional noise, just reflections on self-care, rituals of reclaiming yourself, and private previews.",
+        "button_text": "Begin here"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "brand_story",
+    "featured_collection",
+    "editorial_quote",
+    "image_with_text",
+    "packaging",
+    "newsletter"
+  ]
+}

@@ -1,0 +1,25 @@
+<div class="collection-hero" style="padding: 4.5rem 0 3rem; text-align: center; background-color: var(--color-soft-nude-beige); border-bottom: 1px solid rgba(138, 107, 90, 0.12);">
+  <div class="container container-narrow">
+    <div style="margin-bottom: 1.25rem;">
+      {% render 'icon-lotus', width: 40, height: 40, color: '#6B5448' %}
+    </div>
+    <span class="eyebrow">{{ 'Crafted for Self-Reclamation' }}</span>
+    <h1 class="h1">{{ collection.title | default: "All Pieces" }}</h1>
+    {%- if collection.description != blank -%}
+      <div style="font-size: 1.15rem; color: var(--color-warm-mocha-brown); font-style: italic; max-width: 680px; margin: 1rem auto 0; line-height: 1.75;">
+        {{ collection.description }}
+      </div>
+    {%- else -%}
+      <p style="font-size: 1.15rem; color: var(--color-warm-mocha-brown); font-style: italic; max-width: 680px; margin: 1rem auto 0; line-height: 1.75;">
+        Intimate pieces designed to honor your inner life. Quiet luxury, crafted to remind you that you, too, deserve beauty.
+      </p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection Banner",
+  "settings": []
+}
+{% endschema %}

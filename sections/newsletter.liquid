@@ -1,0 +1,71 @@
+<section class="newsletter-section" id="newsletter-{{ section.id }}">
+  <div class="container container-narrow">
+    <div style="margin-bottom: 1.25rem;">
+      {% render 'icon-lotus', width: 34, height: 34, color: '#6B5448' %}
+    </div>
+
+    <span class="eyebrow">{{ section.settings.eyebrow | default: 'An Intimate Dispatch' }}</span>
+    <h2 class="h2" style="margin-bottom: 0.75rem;">{{ section.settings.heading | default: 'Notes on Softness' }}</h2>
+    <p style="color: var(--color-warm-mocha-brown); max-width: 580px; margin: 0 auto; font-style: italic;">
+      {{ section.settings.subheading | default: 'A quiet letter delivered gently to your inbox. No promotional noise, just reflections on self-care, rituals of reclaiming yourself, and private previews.' }}
+    </p>
+
+    {% form 'customer', class: 'newsletter-form' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input
+        type="email"
+        name="contact[email]"
+        class="newsletter-input"
+        placeholder="{{ 'sections.footer.newsletter_placeholder' | t }}"
+        required
+        aria-label="Email address"
+      >
+      <button type="submit" class="btn btn-primary">
+        {{ section.settings.button_text | default: 'Begin here' }}
+      </button>
+
+      {%- if form.posted_successfully? -%}
+        <p style="margin-top: 1rem; color: var(--color-cocoa-taupe); font-style: italic; width: 100%;">
+          Welcome home. Your first note will arrive tenderly.
+        </p>
+      {%- endif -%}
+    {% endform %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "An Intimate Dispatch"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Notes on Softness"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "A quiet letter delivered gently to your inbox. No promotional noise, just reflections on self-care, rituals of reclaiming yourself, and private previews."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Begin here"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter"
+    }
+  ]
+}
+{% endschema %}

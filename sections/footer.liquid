@@ -1,0 +1,92 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <div style="margin-bottom: 1.5rem;">
+          {%- if section.settings.footer_logo != blank -%}
+            <img src="{{ section.settings.footer_logo | image_url: width: 320 }}" alt="LUNELLE" width="160" height="48">
+          {%- else -%}
+            <img src="{{ 'lunelle-logo-white.svg' | asset_url }}" alt="LUNELLE" width="160" height="48" style="height: 48px; width: auto;">
+          {%- endif -%}
+        </div>
+        <p style="max-width: 320px; margin-bottom: 1.5rem;">
+          {{ section.settings.brand_statement | default: 'To remind women, especially those who give so much to others, that they, too, deserve beauty, softness, and care.' }}
+        </p>
+        <p style="font-style: italic; font-size: 0.85rem; color: #B9968A;">
+          "Confidence worn beneath, felt within."
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>The Collection</h4>
+        <ul class="footer-links">
+          <li><a href="/collections/all">All Pieces</a></li>
+          <li><a href="/collections/bralettes">Silk Bralettes</a></li>
+          <li><a href="/collections/wireless">Wireless Soft Bras</a></li>
+          <li><a href="/collections/bodysuits">Lace Bodysuits</a></li>
+          <li><a href="/collections/loungewear">The Sanctuary Robes</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Our House</h4>
+        <ul class="footer-links">
+          <li><a href="/pages/our-story">The Brand Foundation</a></li>
+          <li><a href="/pages/motherhood-rituals">Motherhood Edit</a></li>
+          <li><a href="/pages/craftsmanship">Intentional Craft</a></li>
+          <li><a href="/blogs/journal">Notes on Softness</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Rituals & Care</h4>
+        <ul class="footer-links">
+          <li><a href="/pages/size-guide">Size & Fit Ritual</a></li>
+          <li><a href="/pages/care-guide">Silk & Lace Care</a></li>
+          <li><a href="/pages/packaging">The Unboxing Ritual</a></li>
+          <li><a href="/pages/contact">Personal Inquiries</a></li>
+        </ul>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+          {%- if settings.social_instagram_link != blank -%}
+            <a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener" style="color: #D8C7B8;" aria-label="Instagram">Instagram</a>
+          {%- endif -%}
+          {%- if settings.social_facebook_link != blank -%}
+            <a href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener" style="color: #D8C7B8;" aria-label="Facebook">Facebook</a>
+          {%- endif -%}
+          {%- if settings.social_tiktok_link != blank -%}
+            <a href="{{ settings.social_tiktok_link }}" target="_blank" rel="noopener" style="color: #D8C7B8;" aria-label="TikTok">TikTok</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>
+        &copy; {{ 'now' | date: '%Y' }} LUNELLE. {{ 'sections.footer.all_rights_reserved' | t }}
+      </div>
+      <div>
+        Manila, Philippines · Southeast Asia
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Custom Footer Logo"
+    },
+    {
+      "type": "textarea",
+      "id": "brand_statement",
+      "label": "Brand Statement",
+      "default": "To remind women, especially those who give so much to others, that they, too, deserve beauty, softness, and care."
+    }
+  ]
+}
+{% endschema %}

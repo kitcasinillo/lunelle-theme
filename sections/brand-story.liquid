@@ -1,0 +1,70 @@
+<section class="brand-story" id="brand-story-{{ section.id }}">
+  <div class="container">
+    <div class="brand-story-inner">
+      <div class="brand-mark-symbol">
+        {% render 'icon-lotus', width: 56, height: 56, color: '#6B5448' %}
+      </div>
+
+      <span class="eyebrow">{{ section.settings.eyebrow | default: 'Our Brand Foundation' }}</span>
+      <h2 class="h1" style="margin-bottom: 2rem;">{{ section.settings.heading | default: 'For the Woman Behind Every Role' }}</h2>
+
+      <p class="brand-story-quote">
+        "You are a mother. A partner. A professional. A caregiver. A thousand things to everyone else. But beneath every role, you are still a woman. Soft. Worthy. Whole."
+      </p>
+
+      <div class="brand-story-desc">
+        <p>
+          {{ section.settings.body_text | default: "LUNELLE exists to remind you that you deserve beauty, not for anyone else's gaze, but for the quiet confidence it brings when you choose yourself. For the woman who gives her best to everyone else, LUNELLE honors her right to feel beautiful for herself. We believe confidence begins within, and luxury is an act of self-care, not performance." }}
+        </p>
+      </div>
+
+      <div style="margin-top: 2.5rem;">
+        <a href="{{ section.settings.button_link | default: '/pages/our-story' }}" class="btn btn-secondary">
+          {{ section.settings.button_label | default: 'Read Our Complete Story' }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Brand Story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Our Brand Foundation"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "For the Woman Behind Every Role"
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Story Body",
+      "default": "LUNELLE exists to remind you that you deserve beauty, not for anyone else's gaze, but for the quiet confidence it brings when you choose yourself. For the woman who gives her best to everyone else, LUNELLE honors her right to feel beautiful for herself. We believe confidence begins within, and luxury is an act of self-care, not performance."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Read Our Complete Story"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Story"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUNELLE · Luxury Lingerie · Theme Live Preview</title>
+  <link rel="icon" type="image/svg+xml" href="assets/lunelle-brand-mark-taupe.svg?v=2">
+  <link rel="preload" href="assets/cochin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/cochin-bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/base.css?v=4">
+</head>
+<body class="template-index">
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="container">
+      <span>Every piece reminds you that you, too, deserve beauty. Complimentary domestic delivery on orders over ₱3,500.</span>
+    </div>
+  </div>
+
+  <!-- Site Header -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header-container">
+        <!-- Mobile Toggle -->
+        <button type="button" class="mobile-nav-toggle" aria-label="Menu">
+          <svg class="icon icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <!-- Navigation -->
+        <nav class="header-nav" role="navigation">
+          <a href="#collection" class="active">The Collection</a>
+          <a href="#story">Our Story</a>
+          <a href="#motherhood">Motherhood Edit</a>
+          <a href="#packaging">Unboxing Ritual</a>
+        </nav>
+
+        <!-- Brand Logo -->
+        <div class="header-logo">
+          <a href="#" aria-label="Lunelle Home">
+            <img src="assets/lunelle-logo-taupe.svg" alt="LUNELLE" width="180" height="52" style="height: 52px; width: auto;">
+          </a>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="header-actions">
+          <button type="button" class="header-action-btn" aria-label="Search">
+            <svg class="icon icon-search" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+
+          <button type="button" class="header-action-btn" data-cart-drawer-trigger aria-label="Cart">
+            <svg class="icon icon-cart" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="cart-count-badge">2</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-menu-drawer" role="dialog" aria-modal="true" aria-label="Navigation Menu">
+    <div class="mobile-menu-inner">
+      <div class="mobile-menu-header">
+        <div style="display: flex; align-items: center; gap: 0.65rem;">
+          <img src="assets/lunelle-brand-mark-taupe.svg?v=2" alt="Lunelle" style="width: 24px; height: auto;">
+          <span style="font-family: var(--font-heading); font-size: 0.95rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-cocoa-taupe); font-weight: 700;">Lunelle</span>
+        </div>
+        <button type="button" class="mobile-menu-close" aria-label="Close navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="mobile-menu-nav" role="navigation">
+        <a href="#collection" class="mobile-nav-link active">The Collection</a>
+        <a href="#story" class="mobile-nav-link">Our Story</a>
+        <a href="#motherhood" class="mobile-nav-link">Motherhood Edit</a>
+        <a href="#packaging" class="mobile-nav-link">Unboxing Ritual</a>
+        <a href="#product-view" class="mobile-nav-link">Product Details & Fit</a>
+      </nav>
+
+      <div class="mobile-menu-footer">
+        <p>"Softness, Reclaimed. Every piece reminds you that you, too, deserve beauty."</p>
+        <div class="mobile-menu-socials">
+          <a href="https://instagram.com/lunelle.official" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://facebook.com/lunelle.official" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://tiktok.com/@lunelle.official" target="_blank" rel="noopener">TikTok</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="MainContent">
+    <!-- Hero Section -->
+    <section class="hero-banner">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <span class="eyebrow">The Self-Care Ritual</span>
+            <h1 class="hero-title">Softness, Reclaimed</h1>
+            <p class="hero-subtitle">Luxury lingerie for the woman who gives her best to everyone else and deserves to keep something beautiful for herself.</p>
+
+            <div class="hero-actions">
+              <a href="#collection" class="btn btn-primary">Explore the Collection</a>
+              <a href="#story" class="btn btn-secondary">Our Story</a>
+            </div>
+          </div>
+
+          <div class="hero-media-wrapper">
+            <div class="hero-media-card">
+              <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=1200&auto=format&fit=crop" alt="Soft morning light luxury lingerie" width="1200" height="1500">
+            </div>
+            <div class="hero-badge-float">
+              <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem;">
+                <img src="assets/lunelle-brand-mark-taupe.svg?v=2" alt="Lotus mark" style="width: 18px; height: auto;">
+                <span style="font-family: var(--font-heading); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-dusty-rose-taupe); font-weight: 700;">Brand Promise</span>
+              </div>
+              <p>"Every piece reminds you that you, too, deserve beauty."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Story Section -->
+    <section class="brand-story" id="story">
+      <div class="container">
+        <div class="brand-story-inner">
+          <div class="brand-mark-symbol">
+            <img src="assets/lunelle-brand-mark-taupe.svg?v=2" alt="Lunelle Symbol" width="42" height="64" style="width: 42px; height: auto; margin: 0 auto; display: block;">
+          </div>
+          <span class="eyebrow">Brand Foundation</span>
+          <h2 class="h1" style="margin-bottom: 2rem;">For the Woman Behind Every Role</h2>
+
+          <p class="brand-story-quote">
+            "You are a mother. A partner. A professional. A caregiver. A thousand things to everyone else. But beneath every role, you are still a woman. Soft. Worthy. Whole."
+          </p>
+
+          <div class="brand-story-desc">
+            <p>
+              LUNELLE exists to remind you that you deserve beauty, not for anyone else's gaze, but for the quiet confidence it brings when you choose yourself. For the woman who gives her best to everyone else, LUNELLE honors her right to feel beautiful for herself. We believe confidence begins within, and luxury is an act of self-care, not performance.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Collection -->
+    <section class="section-featured-collection" id="collection">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <span class="eyebrow">The Signature Edit</span>
+            <h2 class="h2" style="margin-bottom: 0.5rem;">Crafted for Self-Reclamation</h2>
+            <p style="max-width: 650px; margin: 0; color: var(--color-warm-mocha-brown); font-style: italic;">
+              Each piece is designed with intention: premium materials that feel like a secret against your skin, craftsmanship that honors your body, and beauty that reminds you who you are.
+            </p>
+          </div>
+          <a href="#collection" class="btn-link">Explore All Pieces &rarr;</a>
+        </div>
+
+        <div class="product-grid">
+          <!-- Card 1 -->
+          <div class="product-card">
+            <div class="product-card-image-box">
+              <span class="product-badge">Bestseller</span>
+              <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?q=80&w=700&auto=format&fit=crop" alt="The Dawn Silk Bralette" class="img-primary">
+              <button type="button" class="quick-add-btn" data-cart-drawer-trigger aria-label="Keep for Yourself">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                <span>Keep for Yourself</span>
+              </button>
+            </div>
+            <div class="product-card-info">
+              <h3 class="product-card-title"><a href="#product-view">The Dawn Silk Bralette</a></h3>
+              <div class="product-card-tones">Champagne Cream · Soft Nude</div>
+              <div class="product-card-price">₱3,250.00</div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="product-card">
+            <div class="product-card-image-box">
+              <span class="product-badge">Self-Care Ritual</span>
+              <img src="https://images.unsplash.com/photo-1583209814683-c023dd293cc6?q=80&w=700&auto=format&fit=crop" alt="Solitary Bloom Lace Bodysuit" class="img-primary">
+              <button type="button" class="quick-add-btn" data-cart-drawer-trigger aria-label="Keep for Yourself">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                <span>Keep for Yourself</span>
+              </button>
+            </div>
+            <div class="product-card-info">
+              <h3 class="product-card-title"><a href="#product-view">Solitary Bloom Lace Bodysuit</a></h3>
+              <div class="product-card-tones">Dusty Rose Taupe · Cocoa</div>
+              <div class="product-card-price">₱4,650.00</div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="product-card">
+            <div class="product-card-image-box">
+              <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=700&auto=format&fit=crop" alt="The Sanctuary Silk Robe" class="img-primary">
+              <button type="button" class="quick-add-btn" data-cart-drawer-trigger aria-label="Keep for Yourself">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                <span>Keep for Yourself</span>
+              </button>
+            </div>
+            <div class="product-card-info">
+              <h3 class="product-card-title"><a href="#product-view">The Sanctuary Silk Robe</a></h3>
+              <div class="product-card-tones">Champagne Cream</div>
+              <div class="product-card-price">₱5,800.00</div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="product-card">
+            <div class="product-card-image-box">
+              <span class="product-badge">Motherhood Edit</span>
+              <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=700&auto=format&fit=crop" alt="Whispers Wireless Soft Bra" class="img-primary">
+              <button type="button" class="quick-add-btn" data-cart-drawer-trigger aria-label="Keep for Yourself">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                <span>Keep for Yourself</span>
+              </button>
+            </div>
+            <div class="product-card-info">
+              <h3 class="product-card-title"><a href="#product-view">Whispers Wireless Soft Bra</a></h3>
+              <div class="product-card-tones">Warm Mocha · Soft Nude</div>
+              <div class="product-card-price">₱2,850.00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editorial Pull Quote -->
+    <section class="editorial-quote-section">
+      <div class="container container-narrow">
+        <div style="margin-bottom: 1.5rem;">
+          <img src="assets/lunelle-brand-mark-taupe.svg?v=2" alt="Lotus mark" style="width: 30px; height: auto; margin: 0 auto; display: block;">
+        </div>
+        <blockquote class="editorial-quote-text">
+          "Lingerie that feels like a secret gift to yourself."
+        </blockquote>
+        <cite class="editorial-quote-author">The Lunelle Philosophy</cite>
+      </div>
+    </section>
+
+    <!-- Product Detail Demo (Interactive Section) -->
+    <section class="product-detail-section" id="product-view" style="background-color: var(--color-champagne-cream); border-top: 1px solid rgba(138, 107, 90, 0.12);">
+      <div class="container">
+        <div class="product-detail-grid">
+          <div class="product-gallery">
+            <div class="product-main-image">
+              <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?q=80&w=1000&auto=format&fit=crop" alt="The Dawn Silk Bralette" id="MainImage">
+            </div>
+            <div class="product-thumb-row">
+              <div class="product-thumb active">
+                <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?q=80&w=300&auto=format&fit=crop" alt="Thumb 1">
+              </div>
+              <div class="product-thumb">
+                <img src="https://images.unsplash.com/photo-1583209814683-c023dd293cc6?q=80&w=300&auto=format&fit=crop" alt="Thumb 2">
+              </div>
+              <div class="product-thumb">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=300&auto=format&fit=crop" alt="Thumb 3">
+              </div>
+              <div class="product-thumb">
+                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=300&auto=format&fit=crop" alt="Thumb 4">
+              </div>
+            </div>
+          </div>
+
+          <div class="product-info-column">
+            <span class="eyebrow">The Core Self-Care Ritual</span>
+            <h2 class="h1" style="margin-bottom: 0.75rem;">The Dawn Silk Bralette</h2>
+            <div class="product-price-large">₱3,250.00</div>
+            <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-warm-mocha-brown); margin-bottom: 2rem;">
+              Designed to feel like a whisper against your skin. The Dawn Silk Bralette offers supportive wire-free architecture that honors your body's natural contours. Crafted for self-reclamation, reminding you that confidence begins within.
+            </p>
+
+            <!-- Tone Swatches -->
+            <div class="variant-picker">
+              <div class="variant-label">
+                <span>Tone: <strong data-selected-label style="font-family: var(--font-heading); text-transform: none; font-size: 1rem;">Champagne Cream</strong></span>
+              </div>
+              <div class="swatch-group">
+                <button type="button" class="swatch-pill active" data-value="Champagne Cream">Champagne Cream</button>
+                <button type="button" class="swatch-pill" data-value="Soft Nude Beige">Soft Nude Beige</button>
+                <button type="button" class="swatch-pill" data-value="Dusty Rose Taupe">Dusty Rose Taupe</button>
+                <button type="button" class="swatch-pill" data-value="Cocoa Taupe">Cocoa Taupe</button>
+              </div>
+            </div>
+
+            <!-- Size Swatches -->
+            <div class="variant-picker">
+              <div class="variant-label">
+                <span>Size: <strong data-selected-label style="font-family: var(--font-heading); text-transform: none; font-size: 1rem;">Small (S)</strong></span>
+                <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-dusty-rose-taupe); cursor: pointer;">Size Ritual Guide</span>
+              </div>
+              <div class="swatch-group">
+                <button type="button" class="swatch-pill" data-value="XS">XS (32A-B)</button>
+                <button type="button" class="swatch-pill active" data-value="S">S (34A-C)</button>
+                <button type="button" class="swatch-pill" data-value="M">M (36A-D)</button>
+                <button type="button" class="swatch-pill" data-value="L">L (38B-D)</button>
+                <button type="button" class="swatch-pill" data-value="XL">XL (40C-DD)</button>
+              </div>
+            </div>
+
+            <!-- CTA -->
+            <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 2.5rem;">
+              <button type="button" class="btn btn-primary" style="flex: 1; padding: 1.15rem 2rem;" data-cart-drawer-trigger>
+                Keep for Yourself
+              </button>
+            </div>
+
+            <!-- Accordions -->
+            <div class="details-accordion">
+              <div class="accordion-item open">
+                <button type="button" class="accordion-trigger" aria-expanded="true">
+                  <span>Details & Materials</span>
+                  <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <ul style="padding-left: 1.25rem; margin: 0;">
+                    <li>92% Pure Mulberry Silk, 8% Elastane for tender gentle give</li>
+                    <li>Completely wire-free contouring with soft microfiber band</li>
+                    <li>Subtle gold-plated hardware and hypoallergenic clasps</li>
+                    <li>Breathable, temperature-regulating, and gentle against sensitive skin</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button type="button" class="accordion-trigger" aria-expanded="false">
+                  <span>Ritual & Care Guide</span>
+                  <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <p>Treat your piece as a sacred item of self-care. Hand wash gently in cool water using a gentle pH-neutral silk wash. Do not wring or twist. Lay flat in a shaded space to dry naturally.</p>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button type="button" class="accordion-trigger" aria-expanded="false">
+                  <span>The Unboxing Ritual</span>
+                  <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="accordion-content">
+                  <p>Arrives nestled in our signature soft nude box wrapped in cocoa ribbon, carrying the whisper: "You remembered yourself today. This piece is yours."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image with Text: Motherhood -->
+    <section class="section-image-with-text" id="motherhood">
+      <div class="container">
+        <div class="image-text-grid">
+          <div style="position: relative; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); aspect-ratio: 4 / 5;">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=900&auto=format&fit=crop" alt="Intimate portrait" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div>
+            <span class="eyebrow">The Motherhood Journey</span>
+            <h2 class="h2" style="margin-bottom: 1.5rem;">Motherhood changes everything, except the woman you are beneath it all.</h2>
+            <div style="font-size: 1.0625rem; line-height: 1.8; color: var(--color-warm-mocha-brown); margin-bottom: 2rem;">
+              <p>You give your best to everyone. Your hours, your devotion, your energy. In the whirlwind of nurturing, it is easy to let your own softness fade into memory.</p>
+              <p>LUNELLE was created for what remains. Designed with gentle, wire-free contours, cloud-soft silk blends, and empathetic sizing that honors the natural evolution of your body.</p>
+            </div>
+            <a href="#collection" class="btn btn-primary">Explore the Motherhood Edit</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Packaging Experience Section -->
+    <section class="packaging-section" id="packaging">
+      <div class="container">
+        <div class="packaging-grid">
+          <div class="packaging-box-card">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+              <img src="assets/lunelle-brand-mark-taupe.svg?v=2" alt="Lunelle mark" style="width: 26px; height: auto; display: block;">
+              <span style="font-family: var(--font-heading); font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-dusty-rose-taupe); font-weight: 700;">The Physical Touchpoint</span>
+            </div>
+            <h3 class="h2" style="margin-bottom: 1rem;">The Unboxing Whisper</h3>
+            <p style="color: var(--color-warm-mocha-brown); line-height: 1.8;">
+              Packaging is the first physical touch you have with Lunelle. Every surface—textured soft nude paper, warm mocha grosgrain ribbon, and hand-folded tissue—is created so opening it feels like a secret gift to yourself.
+            </p>
+            <div class="packaging-quote-card">
+              <p style="margin: 0; font-family: var(--font-heading); font-size: 1.15rem; line-height: 1.7;">
+                "You remembered yourself today. This piece is yours, not for anyone's eyes, not for any occasion. Just for the quiet knowing that you, too, deserve beauty."
+              </p>
+            </div>
+            <p style="font-size: 0.875rem; color: var(--color-dusty-rose-taupe); font-family: var(--font-heading); letter-spacing: 0.1em; text-transform: uppercase; margin: 0; font-weight: 700;">
+              Softness, Reclaimed. Welcome Home.
+            </p>
+          </div>
+
+          <div>
+            <div style="position: relative; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); aspect-ratio: 1; background-color: var(--color-soft-nude-beige);">
+              <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop" alt="Luxury gift box with satin ribbon" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+      <div class="container container-narrow">
+        <div style="margin-bottom: 1.25rem;">
+          <img src="assets/lunelle-brand-mark-taupe.svg?v=2" alt="Lunelle mark" style="width: 28px; height: auto; margin: 0 auto; display: block;">
+        </div>
+        <span class="eyebrow">An Intimate Dispatch</span>
+        <h2 class="h2" style="margin-bottom: 0.75rem;">Notes on Softness</h2>
+        <p style="color: var(--color-warm-mocha-brown); max-width: 580px; margin: 0 auto; font-style: italic;">
+          A quiet letter delivered gently to your inbox. No promotional noise, just reflections on self-care, rituals of reclaiming yourself, and private previews.
+        </p>
+
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Welcome home. Your first note will arrive tenderly.');">
+          <input type="email" class="newsletter-input" placeholder="Your email address" required aria-label="Email">
+          <button type="submit" class="btn btn-primary">Begin here</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <div style="margin-bottom: 1.5rem;">
+            <img src="assets/lunelle-logo-white.svg?v=2" alt="LUNELLE" width="160" height="48" style="height: 48px; width: auto; display: block;">
+          </div>
+          <p style="max-width: 320px; margin-bottom: 1.5rem;">
+            To remind women, especially those who give so much to others, that they, too, deserve beauty, softness, and care.
+          </p>
+          <p style="font-style: italic; font-size: 0.85rem; color: #B9968A;">
+            "Confidence worn beneath, felt within."
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>The Collection</h4>
+          <ul class="footer-links">
+            <li><a href="#collection">All Pieces</a></li>
+            <li><a href="#collection">Silk Bralettes</a></li>
+            <li><a href="#collection">Wireless Soft Bras</a></li>
+            <li><a href="#collection">Lace Bodysuits</a></li>
+            <li><a href="#collection">The Sanctuary Robes</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Our House</h4>
+          <ul class="footer-links">
+            <li><a href="#story">The Brand Foundation</a></li>
+            <li><a href="#motherhood">Motherhood Edit</a></li>
+            <li><a href="#packaging">Unboxing Ritual</a></li>
+            <li><a href="#">Notes on Softness</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Rituals & Care</h4>
+          <ul class="footer-links">
+            <li><a href="#product-view">Size & Fit Ritual</a></li>
+            <li><a href="#product-view">Silk & Lace Care</a></li>
+            <li><a href="#packaging">The Unboxing Ritual</a></li>
+            <li><a href="#">Personal Inquiries</a></li>
+          </ul>
+
+          <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+            <a href="https://instagram.com/lunelle.official" target="_blank" rel="noopener" style="color: #D8C7B8;">Instagram</a>
+            <a href="https://facebook.com/lunelle.official" target="_blank" rel="noopener" style="color: #D8C7B8;">Facebook</a>
+            <a href="https://tiktok.com/@lunelle.official" target="_blank" rel="noopener" style="color: #D8C7B8;">TikTok</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 LUNELLE. All rights reserved. Designed for quiet confidence.
+        </div>
+        <div>
+          Manila, Philippines · Southeast Asia
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-out Cart Drawer -->
+  <div class="cart-drawer-overlay" aria-hidden="true"></div>
+  <div class="cart-drawer" role="dialog" aria-modal="true" aria-label="Your Private Bag">
+    <div class="cart-drawer-header">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <img src="assets/lunelle-brand-mark-taupe.svg?v=2" alt="Lotus" style="width: 20px; height: auto; display: block;">
+        <h3>Your Private Bag</h3>
+      </div>
+      <button type="button" class="cart-drawer-close" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <div class="free-shipping-bar">
+      <p style="margin: 0; font-weight: 500;">✓ Complimentary domestic care delivery unlocked</p>
+      <div class="shipping-progress-track">
+        <div class="shipping-progress-fill" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <div class="cart-drawer-body">
+      <div class="cart-item">
+        <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?q=80&w=160&auto=format&fit=crop" alt="The Dawn Silk Bralette" class="cart-item-img" width="80" height="106">
+        <div>
+          <div class="cart-item-title">The Dawn Silk Bralette</div>
+          <div class="cart-item-variant">Champagne Cream / Small (S)</div>
+          <div class="quantity-stepper">
+            <button type="button">−</button>
+            <span>1</span>
+            <button type="button">+</button>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div class="cart-item-price">₱3,250.00</div>
+        </div>
+      </div>
+
+      <div class="cart-item">
+        <img src="https://images.unsplash.com/photo-1583209814683-c023dd293cc6?q=80&w=160&auto=format&fit=crop" alt="Solitary Bloom Lace Bodysuit" class="cart-item-img" width="80" height="106">
+        <div>
+          <div class="cart-item-title">Solitary Bloom Lace Bodysuit</div>
+          <div class="cart-item-variant">Dusty Rose Taupe / Small (S)</div>
+          <div class="quantity-stepper">
+            <button type="button">−</button>
+            <span>1</span>
+            <button type="button">+</button>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div class="cart-item-price">₱4,650.00</div>
+        </div>
+      </div>
+
+      <div class="cart-gift-note">
+        <label for="cart-gift-note-text">Include a Whisper Note to Yourself</label>
+        <textarea id="cart-gift-note-text" rows="3" placeholder="Write a note of kindness, self-reclamation, or care to be nestled into your package..."></textarea>
+      </div>
+    </div>
+
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal-row">
+        <span>Subtotal</span>
+        <span>₱7,900.00</span>
+      </div>
+      <p class="cart-taxes-note">Taxes and complimentary domestic care delivery included.</p>
+      <button type="button" class="btn btn-primary" style="width: 100%;" onclick="alert('Proceeding to secure checkout.');">
+        Proceed to Checkout
+      </button>
+    </div>
+  </div>
+
+  <script src="assets/theme.js?v=2"></script>
+</body>
+</html>

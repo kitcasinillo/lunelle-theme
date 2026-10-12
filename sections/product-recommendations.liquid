@@ -1,0 +1,53 @@
+<section class="section-featured-collection" style="background-color: var(--color-soft-nude-beige); border-top: 1px solid rgba(138, 107, 90, 0.1);">
+  <div class="container">
+    <div class="section-header-row">
+      <div>
+        <span class="eyebrow">Complementary Rituals</span>
+        <h2 class="h2" style="margin-bottom: 0;">Pieces to Complete Your Moment</h2>
+      </div>
+    </div>
+
+    <div class="product-grid">
+      {%- for recommendation in recommendations.products limit: 4 -%}
+        {% render 'card-product', card_product: recommendation %}
+      {%- else -%}
+        <div class="product-card">
+          <div class="product-card-image-box">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=700&auto=format&fit=crop" alt="The Sanctuary Silk Robe" class="img-primary">
+            <button type="button" class="quick-add-btn" data-quick-add>
+              {% render 'icon-cart' %}
+              <span>Keep for Yourself</span>
+            </button>
+          </div>
+          <div class="product-card-info">
+            <h3 class="product-card-title"><a href="#">The Sanctuary Silk Robe</a></h3>
+            <div class="product-card-tones">Champagne Cream</div>
+            <div class="product-card-price">₱5,800.00</div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-image-box">
+            <img src="https://images.unsplash.com/photo-1583209814683-c023dd293cc6?q=80&w=700&auto=format&fit=crop" alt="Solitary Bloom Lace Bodysuit" class="img-primary">
+            <button type="button" class="quick-add-btn" data-quick-add>
+              {% render 'icon-cart' %}
+              <span>Keep for Yourself</span>
+            </button>
+          </div>
+          <div class="product-card-info">
+            <h3 class="product-card-title"><a href="#">Solitary Bloom Lace Bodysuit</a></h3>
+            <div class="product-card-tones">Dusty Rose Taupe</div>
+            <div class="product-card-price">₱4,650.00</div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Recommendations",
+  "settings": []
+}
+{% endschema %}

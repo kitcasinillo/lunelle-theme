@@ -1,0 +1,65 @@
+<section style="padding: 4.5rem 0 6rem; min-height: 70vh;">
+  <div class="container container-narrow">
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <div style="margin-bottom: 1rem;">
+        {% render 'icon-lotus', width: 36, height: 36, color: '#6B5448' %}
+      </div>
+      <h1 class="h1">{{ 'sections.cart.title' | t }}</h1>
+    </div>
+
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post" id="cart">
+        <div style="background: rgba(255, 255, 255, 0.7); border: var(--border-delicate); border-radius: var(--radius-md); padding: 2rem; margin-bottom: 2rem;">
+          {%- for item in cart.items -%}
+            <div class="cart-item">
+              <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}" class="cart-item-img" width="80" height="106">
+              <div>
+                <h3 class="cart-item-title">{{ item.product.title }}</h3>
+                {%- unless item.product.has_only_default_variant -%}
+                  <p class="cart-item-variant">{{ item.variant.title }}</p>
+                {%- endunless -%}
+                <p class="cart-item-price">{{ item.final_price | money }}</p>
+              </div>
+              <div style="text-align: right;">
+                <div class="quantity-stepper">
+                  <span>Qty: {{ item.quantity }}</span>
+                </div>
+                <div style="margin-top: 0.5rem; font-weight: 600;">
+                  {{ item.final_line_price | money }}
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <div style="background-color: var(--color-soft-nude-beige); border-radius: var(--radius-md); padding: 2rem; border: var(--border-delicate);">
+          <div class="cart-subtotal-row">
+            <span>{{ 'sections.cart.subtotal' | t }}</span>
+            <span>{{ cart.total_price | money }}</span>
+          </div>
+          <p class="cart-taxes-note">{{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t }}</p>
+
+          <button type="submit" name="checkout" class="btn btn-primary" style="width: 100%; padding: 1.1rem;">
+            {{ 'sections.cart.checkout' | t }}
+          </button>
+        </div>
+      </form>
+    {%- else -%}
+      <div style="text-align: center; padding: 4rem 1rem;">
+        <p style="font-size: 1.25rem; font-style: italic; color: var(--color-cocoa-taupe); margin-bottom: 1.5rem;">
+          {{ 'sections.cart.empty' | t }}
+        </p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn-primary">
+          {{ 'sections.cart.explore' | t }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart Page",
+  "settings": []
+}
+{% endschema %}

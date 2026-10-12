@@ -1,0 +1,106 @@
+<section class="section-featured-collection" style="padding: 3.5rem 0 6rem;">
+  <div class="container">
+    <!-- Filter Bar -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: var(--border-delicate); font-family: var(--font-body); font-size: 0.875rem;">
+      <div style="color: var(--color-warm-mocha-brown);">
+        Showing {{ collection.products_count | default: 4 }} pieces
+      </div>
+
+      <div style="display: flex; gap: 1rem; align-items: center;">
+        <label for="SortBy" style="color: var(--color-cocoa-taupe); letter-spacing: 0.08em; text-transform: uppercase;">Sort by:</label>
+        <select id="SortBy" style="background: transparent; border: var(--border-delicate); padding: 0.4rem 0.85rem; border-radius: var(--radius-full); font-family: var(--font-body); font-size: 0.875rem; color: var(--color-cocoa-taupe); outline: none;">
+          <option value="featured">Curated Rituals</option>
+          <option value="best-selling">Most Beloved</option>
+          <option value="price-ascending">Price: Low to High</option>
+          <option value="price-descending">Price: High to Low</option>
+          <option value="created-descending">New Arrivals</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="product-grid">
+      {%- paginate collection.products by 12 -%}
+        {%- for product in collection.products -%}
+          {% render 'card-product', card_product: product, show_secondary_image: true %}
+        {%- else -%}
+          <div class="product-card">
+            <div class="product-card-image-box">
+              <span class="product-badge">Bestseller</span>
+              <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?q=80&w=700&auto=format&fit=crop" alt="The Dawn Silk Bralette" class="img-primary">
+              <button type="button" class="quick-add-btn" data-quick-add>
+                {% render 'icon-cart' %}
+                <span>Keep for Yourself</span>
+              </button>
+            </div>
+            <div class="product-card-info">
+              <h3 class="product-card-title"><a href="#">The Dawn Silk Bralette</a></h3>
+              <div class="product-card-tones">Champagne Cream · Soft Nude</div>
+              <div class="product-card-price">₱3,250.00</div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card-image-box">
+              <span class="product-badge">Self-Care Ritual</span>
+              <img src="https://images.unsplash.com/photo-1583209814683-c023dd293cc6?q=80&w=700&auto=format&fit=crop" alt="Solitary Bloom Lace Bodysuit" class="img-primary">
+              <button type="button" class="quick-add-btn" data-quick-add>
+                {% render 'icon-cart' %}
+                <span>Keep for Yourself</span>
+              </button>
+            </div>
+            <div class="product-card-info">
+              <h3 class="product-card-title"><a href="#">Solitary Bloom Lace Bodysuit</a></h3>
+              <div class="product-card-tones">Dusty Rose Taupe · Cocoa</div>
+              <div class="product-card-price">₱4,650.00</div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card-image-box">
+              <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=700&auto=format&fit=crop" alt="The Sanctuary Silk Robe" class="img-primary">
+              <button type="button" class="quick-add-btn" data-quick-add>
+                {% render 'icon-cart' %}
+                <span>Keep for Yourself</span>
+              </button>
+            </div>
+            <div class="product-card-info">
+              <h3 class="product-card-title"><a href="#">The Sanctuary Silk Robe</a></h3>
+              <div class="product-card-tones">Champagne Cream</div>
+              <div class="product-card-price">₱5,800.00</div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card-image-box">
+              <span class="product-badge">Motherhood Edit</span>
+              <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=700&auto=format&fit=crop" alt="Whispers Wireless Soft Bra" class="img-primary">
+              <button type="button" class="quick-add-btn" data-quick-add>
+                {% render 'icon-cart' %}
+                <span>Keep for Yourself</span>
+              </button>
+            </div>
+            <div class="product-card-info">
+              <h3 class="product-card-title"><a href="#">Whispers Wireless Soft Bra</a></h3>
+              <div class="product-card-tones">Warm Mocha · Soft Nude</div>
+              <div class="product-card-price">₱2,850.00</div>
+            </div>
+          </div>
+        {%- endfor -%}
+
+        {%- if paginate.pages > 1 -%}
+          <div style="grid-column: 1 / -1; text-align: center; margin-top: 3rem;">
+            {{ paginate | default_pagination }}
+          </div>
+        {%- endif -%}
+      {%- endpaginate -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Grid",
+  "settings": []
+}
+{% endschema %}

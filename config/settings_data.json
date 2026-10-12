@@ -1,0 +1,35 @@
+{
+  "current": {
+    "color_champagne_cream": "#EFE7DF",
+    "color_soft_nude_beige": "#D8C7B8",
+    "color_dusty_rose_taupe": "#B9968A",
+    "color_warm_mocha_brown": "#8A6B5A",
+    "color_cocoa_taupe": "#6B5448",
+    "color_white": "#FFFFFF",
+    "heading_scale": 100,
+    "body_scale": 100,
+    "logo_width": 180,
+    "cart_type": "drawer",
+    "free_shipping_threshold": 3500,
+    "enable_gift_note": true,
+    "social_instagram_link": "https://instagram.com/lunelle.official",
+    "social_facebook_link": "https://facebook.com/lunelle.official",
+    "social_tiktok_link": "https://tiktok.com/@lunelle.official"
+  },
+  "presets": {
+    "Default": {
+      "color_champagne_cream": "#EFE7DF",
+      "color_soft_nude_beige": "#D8C7B8",
+      "color_dusty_rose_taupe": "#B9968A",
+      "color_warm_mocha_brown": "#8A6B5A",
+      "color_cocoa_taupe": "#6B5448",
+      "color_white": "#FFFFFF",
+      "heading_scale": 100,
+      "body_scale": 100,
+      "logo_width": 180,
+      "cart_type": "drawer",
+      "free_shipping_threshold": 3500,
+      "enable_gift_note": true
+    }
+  }
+}

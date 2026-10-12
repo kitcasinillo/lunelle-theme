@@ -1,0 +1,71 @@
+{% comment %}
+  Lunelle Luxury Product Card Snippet
+  Accepts:
+  - card_product: {Object} Product Liquid object
+  - show_secondary_image: {Boolean}
+  - media_aspect_ratio: {String}
+{% endcomment %}
+
+{%- liquid
+  assign featured_media = card_product.featured_media | default: card_product.images[0]
+  assign secondary_media = card_product.media[1] | default: card_product.images[1]
+-%}
+
+<div class="product-card" data-product-id="{{ card_product.id }}">
+  <div class="product-card-image-box">
+    {%- if card_product.tags contains 'Bestseller' or card_product.tags contains 'Ritual' -%}
+      <span class="product-badge">
+        {%- if card_product.tags contains 'Bestseller' -%}Bestseller{%- else -%}Self-Care Ritual{%- endif -%}
+      </span>
+    {%- endif -%}
+
+    <a href="{{ card_product.url }}" class="product-card-link" aria-label="{{ card_product.title | escape }}">
+      {%- if featured_media -%}
+        <img
+          src="{{ featured_media | image_url: width: 700 }}"
+          alt="{{ featured_media.alt | default: card_product.title | escape }}"
+          class="img-primary"
+          loading="lazy"
+          width="700"
+          height="933"
+        >
+        {%- if secondary_media and show_secondary_image != false -%}
+          <img
+            src="{{ secondary_media | image_url: width: 700 }}"
+            alt="{{ secondary_media.alt | default: card_product.title | escape }}"
+            class="img-secondary"
+            loading="lazy"
+            width="700"
+            height="933"
+          >
+        {%- endif -%}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </a>
+
+    <button type="button" class="quick-add-btn" data-quick-add data-product-id="{{ card_product.id }}" aria-label="{{ 'products.product.add_to_cart' | t }}">
+      {% render 'icon-cart' %}
+      <span>{{ 'products.product.add_to_cart' | t }}</span>
+    </button>
+  </div>
+
+  <div class="product-card-info">
+    <h3 class="product-card-title">
+      <a href="{{ card_product.url }}">{{ card_product.title }}</a>
+    </h3>
+
+    <div class="product-card-tones">
+      {%- if card_product.options_by_name['Color'] or card_product.options_by_name['Tone'] -%}
+        {%- assign tone_option = card_product.options_by_name['Color'] | default: card_product.options_by_name['Tone'] -%}
+        {{ tone_option.values | join: ' · ' }}
+      {%- else -%}
+        Champagne · Soft Nude · Dusty Rose
+      {%- endif -%}
+    </div>
+
+    <div class="product-card-price">
+      {% render 'price', product: card_product, price_class: '' %}
+    </div>
+  </div>
+</div>

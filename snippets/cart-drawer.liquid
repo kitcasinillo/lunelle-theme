@@ -1,0 +1,87 @@
+<div class="cart-drawer-overlay" aria-hidden="true"></div>
+
+<div class="cart-drawer" role="dialog" aria-modal="true" aria-label="{{ 'sections.cart.title' | t }}">
+  <div class="cart-drawer-header">
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      {% render 'icon-lotus', width: 26, height: 26, color: '#6B5448' %}
+      <h3>{{ 'sections.cart.title' | t }}</h3>
+    </div>
+    <button type="button" class="cart-drawer-close" aria-label="{{ 'general.accessibility.close' | t }}">
+      {% render 'icon-close' %}
+    </button>
+  </div>
+
+  <div class="free-shipping-bar">
+    {%- assign threshold = settings.free_shipping_threshold | default: 3500 -%}
+    {%- assign threshold_cents = threshold | times: 100 -%}
+    {%- if cart.total_price >= threshold_cents -%}
+      <p style="margin: 0; font-weight: 500;">✓ {{ 'sections.cart.free_shipping_achieved' | t }}</p>
+      <div class="shipping-progress-track">
+        <div class="shipping-progress-fill" style="width: 100%;"></div>
+      </div>
+    {%- else -%}
+      {%- assign diff = threshold_cents | minus: cart.total_price -%}
+      <p style="margin: 0;">{{ 'sections.cart.free_shipping_progress' | t: amount: diff | money }}</p>
+      {%- assign progress = cart.total_price | times: 100 | divided_by: threshold_cents -%}
+      <div class="shipping-progress-track">
+        <div class="shipping-progress-fill" style="width: {{ progress | default: 0 }}%;"></div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="cart-drawer-body">
+    {%- if cart.item_count > 0 -%}
+      <div class="cart-items-list">
+        {%- for item in cart.items -%}
+          <div class="cart-item" data-line-key="{{ item.key }}">
+            <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}" class="cart-item-img" width="80" height="106">
+            <div>
+              <div class="cart-item-title">{{ item.product.title }}</div>
+              {%- unless item.product.has_only_default_variant -%}
+                <div class="cart-item-variant">{{ item.variant.title }}</div>
+              {%- endunless -%}
+              <div class="quantity-stepper">
+                <button type="button" data-qty-change="-1" aria-label="Decrease">−</button>
+                <span>{{ item.quantity }}</span>
+                <button type="button" data-qty-change="1" aria-label="Increase">+</button>
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <div class="cart-item-price">{{ item.final_line_price | money }}</div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div style="text-align: center; padding: 4rem 1rem;">
+        {% render 'icon-lotus', width: 44, height: 44, color: '#B9968A' %}
+        <p style="margin-top: 1.5rem; font-style: italic; color: var(--color-cocoa-taupe);">{{ 'sections.cart.empty' | t }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn-secondary" style="margin-top: 1rem;">
+          {{ 'sections.cart.explore' | t }}
+        </a>
+      </div>
+    {%- endif -%}
+
+    {%- if settings.enable_gift_note -%}
+      <div class="cart-gift-note">
+        <label for="cart-gift-note-text">{{ 'sections.cart.gift_note_label' | t }}</label>
+        <textarea id="cart-gift-note-text" rows="3" placeholder="{{ 'sections.cart.gift_note_placeholder' | t }}"></textarea>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if cart.item_count > 0 -%}
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal-row">
+        <span>{{ 'sections.cart.subtotal' | t }}</span>
+        <span>{{ cart.total_price | money }}</span>
+      </div>
+      <p class="cart-taxes-note">{{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t }}</p>
+      <form action="{{ routes.cart_url }}" method="post">
+        <button type="submit" name="checkout" class="btn btn-primary" style="width: 100%;">
+          {{ 'sections.cart.checkout' | t }}
+        </button>
+      </form>
+    </div>
+  {%- endif -%}
+</div>
