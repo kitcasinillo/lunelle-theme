@@ -140,11 +140,28 @@ a {
   transition: var(--transition-smooth);
 }
 
-img, svg {
+img {
   max-width: 100%;
   height: auto;
   display: block;
 }
+
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Icons & Brand Marks */
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.icon-lotus {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 
 /* Container */
 .container {
@@ -477,13 +494,18 @@ img, svg {
   margin: 0 auto;
 }
 
+.page-header-mark,
 .brand-mark-symbol {
-  width: 44px;
-  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0 auto 1.5rem;
   opacity: 0.95;
+  text-align: center;
 }
 
+.page-header-mark img,
+.page-header-mark svg,
 .brand-mark-symbol img,
 .brand-mark-symbol svg {
   background: transparent !important;
