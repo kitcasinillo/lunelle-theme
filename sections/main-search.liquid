@@ -1,0 +1,151 @@
+<section class="section-search-page" style="padding: 4.5rem 0 6.5rem; min-height: 75vh;">
+  <div class="container">
+    <!-- Header -->
+    <div style="text-align: center; max-width: 760px; margin: 0 auto 3rem;">
+      <div class="page-header-mark" style="margin-bottom: 1.25rem;">
+        {% render 'icon-lotus', width: 42, height: 42, color: '#6B5448' %}
+      </div>
+      <span class="eyebrow">{{ 'Curated Discovery' }}</span>
+      <h1 class="h1" style="margin-bottom: 1rem;">
+        {%- if search.performed -%}
+          Search Results
+        {%- else -%}
+          Search Our Boutique
+        {%- endif -%}
+      </h1>
+      <p style="font-size: 1.15rem; color: var(--color-warm-mocha-brown); line-height: 1.8; font-style: italic; margin-bottom: 0;">
+        {%- if search.performed -%}
+          {%- if search.results_count > 0 -%}
+            Showing {{ search.results_count }} {{ search.results_count | pluralize: 'piece', 'pieces' }} for "{{ search.terms | escape }}"
+          {%- else -%}
+            We could not find any pieces matching "{{ search.terms | escape }}"
+          {%- endif -%}
+        {%- else -%}
+          Intimate pieces, fine silk, and daily rituals crafted to remind you that you, too, deserve beauty.
+        {%- endif -%}
+      </p>
+    </div>
+
+    <!-- Search Form -->
+    <div class="search-page-form-wrapper">
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search-page-form">
+        <input type="hidden" name="type" value="product">
+        <input type="hidden" name="options[prefix]" value="last">
+
+        <div class="search-page-input-group">
+          <span class="search-page-icon">
+            {% render 'icon-search' %}
+          </span>
+          <input
+            type="search"
+            name="q"
+            value="{{ search.terms | escape }}"
+            placeholder="Search by silk, lace, bra, bodysuit..."
+            class="search-page-input"
+            aria-label="{{ 'general.accessibility.search' | t }}"
+            {% unless search.performed %}autofocus{% endunless %}
+          >
+          {%- if search.terms != blank -%}
+            <a href="{{ routes.search_url }}" class="search-page-clear" aria-label="Clear search">
+              {% render 'icon-close' %}
+            </a>
+          {%- endif -%}
+          <button type="submit" class="btn btn-primary search-page-submit">
+            Search
+          </button>
+        </div>
+      </form>
+
+      <!-- Suggested Search Pills -->
+      <div class="search-suggested-pills">
+        <span class="suggested-label">Suggested:</span>
+        <a href="{{ routes.search_url }}?type=product&options%5Bprefix%5D=last&q=Silk" class="search-pill">Silk Bralettes</a>
+        <a href="{{ routes.search_url }}?type=product&options%5Bprefix%5D=last&q=Wireless" class="search-pill">Wireless Bras</a>
+        <a href="{{ routes.search_url }}?type=product&options%5Bprefix%5D=last&q=Bodysuit" class="search-pill">Lace Bodysuits</a>
+        <a href="{{ routes.search_url }}?type=product&options%5Bprefix%5D=last&q=Robe" class="search-pill">Sanctuary Robes</a>
+        <a href="/collections/all" class="search-pill search-pill-all">All Pieces &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Search Results / Content -->
+    {%- if search.performed -%}
+      {%- if search.results_count > 0 -%}
+        {%- paginate search.results by 12 -%}
+          <div class="product-grid" style="margin-top: 3.5rem;">
+            {%- for item in search.results -%}
+              {%- if item.object_type == 'product' -%}
+                {% render 'card-product', card_product: item, show_secondary_image: true %}
+              {%- else -%}
+                <div class="product-card" style="padding: 2rem; background: rgba(255, 255, 255, 0.6); border: var(--border-delicate); border-radius: var(--radius-md);">
+                  <span class="eyebrow">{{ item.object_type | capitalize }}</span>
+                  <h3 class="product-card-title"><a href="{{ item.url }}">{{ item.title }}</a></h3>
+                  <p style="color: var(--color-warm-mocha-brown); font-size: 0.95rem; line-height: 1.6; margin-top: 0.75rem;">
+                    {{ item.content | strip_html | truncatewords: 24 }}
+                  </p>
+                  <a href="{{ item.url }}" class="btn btn-secondary" style="margin-top: 1rem; padding: 0.65rem 1.25rem; font-size: 0.8rem;">
+                    Read More &rarr;
+                  </a>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          {%- if paginate.pages > 1 -%}
+            <div style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 4rem;">
+              {%- if paginate.previous -%}
+                <a href="{{ paginate.previous.url }}" class="btn btn-secondary" style="padding: 0.75rem 1.5rem;">&larr; Previous</a>
+              {%- endif -%}
+              {%- if paginate.next -%}
+                <a href="{{ paginate.next.url }}" class="btn btn-primary" style="padding: 0.75rem 1.5rem;">Next &rarr;</a>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endpaginate -%}
+      {%- else -%}
+        <!-- Empty State -->
+        <div class="search-empty-box" style="text-align: center; max-width: 640px; margin: 4rem auto 0; padding: 4rem 2rem; background: rgba(255, 255, 255, 0.65); border: var(--border-delicate); border-radius: var(--radius-md);">
+          <div class="page-header-mark" style="margin-bottom: 1.25rem;">
+            {% render 'icon-lotus', width: 38, height: 38, color: '#B9968A' %}
+          </div>
+          <h2 class="h2" style="font-size: 1.85rem; margin-bottom: 1rem;">No pieces found for your search</h2>
+          <p style="color: var(--color-warm-mocha-brown); font-size: 1.05rem; line-height: 1.8; margin-bottom: 2.25rem;">
+            May we invite you to return to our core rituals and explore our full collection? Every piece is made to honor you.
+          </p>
+          <a href="/collections/all" class="btn btn-primary">
+            Explore All Pieces
+          </a>
+        </div>
+      {%- endif -%}
+    {%- else -%}
+      <!-- Initial State (Before searching) -->
+      <div style="margin-top: 4.5rem;">
+        <h3 class="h3" style="text-align: center; margin-bottom: 2rem;">Explore Curated Collections</h3>
+        <div class="search-category-grid">
+          <a href="/collections/all" class="search-category-card">
+            <span class="search-category-title">All Pieces</span>
+            <span class="search-category-subtitle">The Complete House Ritual</span>
+          </a>
+          <a href="/collections/bralettes" class="search-category-card">
+            <span class="search-category-title">Silk Bralettes</span>
+            <span class="search-category-subtitle">Pure mulberry silk & wirefree comfort</span>
+          </a>
+          <a href="/collections/wireless" class="search-category-card">
+            <span class="search-category-title">Wireless Soft Bras</span>
+            <span class="search-category-subtitle">Second-skin support for everyday</span>
+          </a>
+          <a href="/collections/bodysuits" class="search-category-card">
+            <span class="search-category-title">Lace Bodysuits</span>
+            <span class="search-category-subtitle">Delicate French lace silhouettes</span>
+          </a>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Search Page",
+  "settings": []
+}
+{% endschema %}

@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
   initCartDrawer();
+  initSearchDrawer();
   initAccordions();
   initProductGalleries();
   initSwatches();
@@ -190,3 +191,57 @@ function initMobileNav() {
     }
   });
 }
+
+// Header Quick Search Drawer
+function initSearchDrawer() {
+  const trigger = document.querySelector('[data-search-trigger]');
+  const drawer = document.querySelector('#HeaderSearchDrawer');
+  const closeBtn = document.querySelector('.header-quick-search-close');
+  const searchInput = document.querySelector('.header-quick-search-input');
+
+  if (!trigger || !drawer) return;
+
+  const openSearch = () => {
+    drawer.classList.add('active');
+    trigger.setAttribute('aria-expanded', 'true');
+    setTimeout(() => {
+      searchInput?.focus();
+    }, 100);
+  };
+
+  const closeSearch = () => {
+    drawer.classList.remove('active');
+    trigger.setAttribute('aria-expanded', 'false');
+  };
+
+  trigger.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (drawer.classList.contains('active')) {
+      closeSearch();
+    } else {
+      openSearch();
+    }
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeSearch();
+    });
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('active')) {
+      closeSearch();
+    }
+  });
+
+  // Close when clicking outside header
+  document.addEventListener('click', (e) => {
+    if (!drawer.contains(e.target) && !trigger.contains(e.target) && drawer.classList.contains('active')) {
+      closeSearch();
+    }
+  });
+}
+

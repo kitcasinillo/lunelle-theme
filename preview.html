@@ -48,7 +48,7 @@
 
         <!-- Header Actions -->
         <div class="header-actions">
-          <button type="button" class="header-action-btn" aria-label="Search">
+          <button type="button" class="header-action-btn" data-search-trigger aria-label="Search">
             <svg class="icon icon-search" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -64,6 +64,35 @@
             <span class="cart-count-badge">2</span>
           </button>
         </div>
+      </div>
+    </div>
+
+    <!-- Header Slide-Down Quick Search -->
+    <div class="header-search-drawer" id="HeaderSearchDrawer">
+      <div class="container">
+        <form action="#collection" method="get" role="search" class="header-quick-search-form" onsubmit="event.preventDefault(); alert('Searching for: ' + this.q.value);">
+          <span class="header-quick-search-icon">
+            <svg class="icon icon-search" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <input
+            type="search"
+            name="q"
+            class="header-quick-search-input"
+            placeholder="Search silk bralettes, lace bodysuits, robes..."
+            autocomplete="off"
+            aria-label="Search"
+          >
+          <button type="submit" class="btn btn-primary" style="padding: 0.65rem 1.4rem; font-size: 0.85rem; flex-shrink: 0;">Search</button>
+          <button type="button" class="header-quick-search-close" aria-label="Close search">
+            <svg class="icon icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </form>
       </div>
     </div>
   </header>

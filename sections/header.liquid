@@ -31,9 +31,9 @@
 
       <!-- Action Icons -->
       <div class="header-actions">
-        <a href="{{ routes.search_url }}" class="header-action-btn" aria-label="{{ 'general.accessibility.search' | t }}">
+        <button type="button" class="header-action-btn" data-search-trigger aria-label="{{ 'general.accessibility.search' | t }}">
           {% render 'icon-search' %}
-        </a>
+        </button>
 
         {%- if shop.customer_accounts_enabled -%}
           <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="header-action-btn" aria-label="Account">
@@ -46,6 +46,29 @@
           <span class="cart-count-badge" data-cart-count>{{ cart.item_count }}</span>
         </button>
       </div>
+    </div>
+  </div>
+
+  <!-- Header Slide-Down Quick Search -->
+  <div class="header-search-drawer" id="HeaderSearchDrawer">
+    <div class="container">
+      <form action="{{ routes.search_url }}" method="get" role="search" class="header-quick-search-form">
+        <input type="hidden" name="type" value="product">
+        <input type="hidden" name="options[prefix]" value="last">
+        <span class="header-quick-search-icon">{% render 'icon-search' %}</span>
+        <input
+          type="search"
+          name="q"
+          class="header-quick-search-input"
+          placeholder="Search silk bralettes, lace bodysuits, robes..."
+          autocomplete="off"
+          aria-label="{{ 'general.accessibility.search' | t }}"
+        >
+        <button type="submit" class="btn btn-primary" style="padding: 0.65rem 1.4rem; font-size: 0.85rem; flex-shrink: 0;">Search</button>
+        <button type="button" class="header-quick-search-close" aria-label="{{ 'general.accessibility.close' | t }}">
+          {% render 'icon-close' %}
+        </button>
+      </form>
     </div>
   </div>
 </header>
