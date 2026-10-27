@@ -1,27 +1,63 @@
+{% comment %}
+  Lunelle Social Sharing Meta Tags
+  Renders OpenGraph, Twitter Cards, and Pinterest rich pins.
+{% endcomment %}
+
 {%- assign og_title = page_title | default: shop.name -%}
 {%- assign og_url = canonical_url | default: request.origin -%}
 {%- assign og_type = 'website' -%}
 {%- assign og_description = page_description | default: shop.description | default: shop.name -%}
 
-{%- if request.page_type == 'product' -%}
-  {%- assign og_type = 'product' -%}
-{%- elsif request.page_type == 'article' -%}
-  {%- assign og_type = 'article' -%}
+{%- case request.page_type -%}
+  {%- when 'product' -%}
+    {%- assign og_type = 'product' -%}
+    {%- if product.featured_media -%}
+      {%- assign og_image = product.featured_media -%}
+    {%- endif -%}
+  {%- when 'article' -%}
+    {%- assign og_type = 'article' -%}
+    {%- if article.image -%}
+      {%- assign og_image = article.image -%}
+    {%- endif -%}
+  {%- when 'collection' -%}
+    {%- if collection.image -%}
+      {%- assign og_image = collection.image -%}
+    {%- elsif collection.products.first.featured_media -%}
+      {%- assign og_image = collection.products.first.featured_media -%}
+    {%- endif -%}
+  {%- when 'password' -%}
+    {%- assign og_title = shop.name | append: ' &ndash; Coming Soon' -%}
+{%- endcase -%}
+
+{%- if og_image == blank -%}
+  {%- assign og_image = page_image | default: settings.share_image -%}
 {%- endif -%}
 
+<!-- OpenGraph Meta Tags -->
 <meta property="og:site_name" content="{{ shop.name }}">
 <meta property="og:url" content="{{ og_url }}">
 <meta property="og:title" content="{{ og_title | escape }}">
 <meta property="og:type" content="{{ og_type }}">
 <meta property="og:description" content="{{ og_description | escape }}">
 
-{%- if page_image -%}
-  <meta property="og:image" content="http:{{ page_image | image_url }}">
-  <meta property="og:image:secure_url" content="https:{{ page_image | image_url }}">
-  <meta property="og:image:width" content="{{ page_image.width }}">
-  <meta property="og:image:height" content="{{ page_image.height }}">
+{%- if og_image -%}
+  <meta property="og:image" content="http:{{ og_image | image_url: width: 1200 }}">
+  <meta property="og:image:secure_url" content="https:{{ og_image | image_url: width: 1200 }}">
+  <meta property="og:image:width" content="{{ og_image.width | default: 1200 }}">
+  <meta property="og:image:height" content="{{ og_image.height | default: 630 }}">
+  <meta property="og:image:alt" content="{{ og_image.alt | default: og_title | escape }}">
 {%- endif -%}
 
+{%- if request.page_type == 'product' -%}
+  <meta property="og:price:amount" content="{{ product.selected_or_first_available_variant.price | money_without_currency | strip_html }}">
+  <meta property="og:price:currency" content="{{ cart.currency.iso_code | default: 'PHP' }}">
+{%- endif -%}
+
+<!-- Twitter Card Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ og_title | escape }}">
 <meta name="twitter:description" content="{{ og_description | escape }}">
+{%- if og_image -%}
+  <meta name="twitter:image" content="https:{{ og_image | image_url: width: 1200 }}">
+  <meta name="twitter:image:alt" content="{{ og_image.alt | default: og_title | escape }}">
+{%- endif -%}
