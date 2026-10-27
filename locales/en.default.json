@@ -43,6 +43,17 @@
       "newsletter_button": "Begin here",
       "newsletter_placeholder": "Your email address",
       "all_rights_reserved": "All rights reserved. Designed for quiet confidence."
+    },
+    "collection_list": {
+      "title": "Collections of Intention",
+      "empty": "No collections found.",
+      "view_collection": "Explore Collection"
+    },
+    "blog": {
+      "title": "Letters & Rituals",
+      "read_more": "Read the Journal",
+      "back_to_blog": "&larr; Back to Letters & Rituals",
+      "empty": "No journal entries found."
     }
   },
   "products": {

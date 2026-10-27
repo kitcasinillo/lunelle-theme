@@ -1,0 +1,108 @@
+<section class="section-collection-list" style="padding: 4rem 0 6rem;">
+  <div class="container">
+    <div class="page-header-mark" style="margin-bottom: 3.5rem; text-align: center;">
+      <div style="display: inline-flex; justify-content: center; margin-bottom: 0.75rem;">
+        {% render 'icon-lotus', width: 28, height: 28, color: '#6B5448' %}
+      </div>
+      <h1 class="h2" style="margin: 0 0 0.5rem;">{{ section.settings.title | default: 'sections.collection_list.title' | t }}</h1>
+      <p style="color: var(--color-warm-mocha-brown); font-style: italic; max-width: 540px; margin: 0 auto;">
+        {{ section.settings.subheading | default: 'Quietly curated edits tailored to honour your skin, your pace, and your personal beauty.' }}
+      </p>
+    </div>
+
+    {%- paginate collections by 12 -%}
+      <div class="collection-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2.5rem 2rem;">
+        {%- for collection in collections -%}
+          {%- unless collection.handle == 'frontpage' -%}
+            <div class="collection-card" style="display: flex; flex-direction: column;">
+              <a href="{{ collection.url }}" class="collection-card-image-box" style="display: block; position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--radius-sm); background-color: var(--color-soft-nude-beige); margin-bottom: 1.25rem;">
+                {%- assign collection_image = collection.featured_image | default: collection.products.first.featured_image -%}
+                {%- if collection_image -%}
+                  <img
+                    src="{{ collection_image | image_url: width: 800 }}"
+                    alt="{{ collection.title | escape }}"
+                    loading="lazy"
+                    width="800"
+                    height="1000"
+                    style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);"
+                  >
+                {%- else -%}
+                  {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </a>
+
+              <div class="collection-card-info" style="text-align: center;">
+                <h2 style="font-family: var(--font-heading); font-size: 1.35rem; margin: 0 0 0.35rem;">
+                  <a href="{{ collection.url }}" style="color: var(--color-cocoa-taupe); text-decoration: none;">
+                    {{ collection.title }}
+                  </a>
+                </h2>
+                <p style="font-size: 0.85rem; color: var(--color-warm-mocha-brown); margin: 0 0 0.75rem; letter-spacing: 0.05em; text-transform: uppercase;">
+                  {{ collection.all_products_count }} {{ collection.all_products_count | pluralize: 'piece', 'pieces' }}
+                </p>
+                <a href="{{ collection.url }}" class="btn-link" style="font-size: 0.85rem;">
+                  {{ 'sections.collection_list.view_collection' | t }} &rarr;
+                </a>
+              </div>
+            </div>
+          {%- endunless -%}
+        {%- else -%}
+          <!-- Mock Curated Collections Preview -->
+          <div class="collection-card" style="display: flex; flex-direction: column;">
+            <a href="/collections/all" class="collection-card-image-box" style="display: block; position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--radius-sm); background-color: var(--color-soft-nude-beige); margin-bottom: 1.25rem;">
+              <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?q=80&w=800&auto=format&fit=crop" alt="The Silk Bralettes" width="800" height="1000" style="width: 100%; height: 100%; object-fit: cover;">
+            </a>
+            <div class="collection-card-info" style="text-align: center;">
+              <h2 style="font-family: var(--font-heading); font-size: 1.35rem; margin: 0 0 0.35rem;">
+                <a href="/collections/all" style="color: var(--color-cocoa-taupe); text-decoration: none;">The Silk Bralettes</a>
+              </h2>
+              <p style="font-size: 0.85rem; color: var(--color-warm-mocha-brown); margin: 0 0 0.75rem;">Wire-free gentle contouring</p>
+              <a href="/collections/all" class="btn-link" style="font-size: 0.85rem;">Explore Collection &rarr;</a>
+            </div>
+          </div>
+
+          <div class="collection-card" style="display: flex; flex-direction: column;">
+            <a href="/collections/all" class="collection-card-image-box" style="display: block; position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--radius-sm); background-color: var(--color-soft-nude-beige); margin-bottom: 1.25rem;">
+              <img src="https://images.unsplash.com/photo-1583209814683-c023dd293cc6?q=80&w=800&auto=format&fit=crop" alt="The Loungewear Ritual" width="800" height="1000" style="width: 100%; height: 100%; object-fit: cover;">
+            </a>
+            <div class="collection-card-info" style="text-align: center;">
+              <h2 style="font-family: var(--font-heading); font-size: 1.35rem; margin: 0 0 0.35rem;">
+                <a href="/collections/all" style="color: var(--color-cocoa-taupe); text-decoration: none;">The Loungewear Ritual</a>
+              </h2>
+              <p style="font-size: 0.85rem; color: var(--color-warm-mocha-brown); margin: 0 0 0.75rem;">Robes & tender silk slips</p>
+              <a href="/collections/all" class="btn-link" style="font-size: 0.85rem;">Explore Collection &rarr;</a>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- if paginate.pages > 1 -%}
+        <div style="margin-top: 3.5rem; text-align: center;">
+          {{ paginate | default_pagination }}
+        </div>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collections List",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Collections of Intention"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Quietly curated edits tailored to honour your skin, your pace, and your personal beauty."
+    }
+  ]
+}
+{% endschema %}
