@@ -36,36 +36,61 @@
           {{ product.description | default: "Designed to feel like a whisper against your skin. The Dawn Silk Bralette offers supportive wire-free architecture that honors your body's natural contours. Crafted for self-reclamation, reminding you that confidence begins within." }}
         </div>
 
-        {% form 'product', product, id: 'product_form', class: 'product-form' %}
+        {% form 'product', product, id: 'product_form', class: 'product-form', data-section-id: section.id %}
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
-          <!-- Tone / Color Swatches -->
-          <div class="variant-picker">
-            <div class="variant-label">
-              <span>Tone: <strong data-selected-label style="font-family: var(--font-heading); text-transform: none; font-size: 1rem;">Champagne Cream</strong></span>
+          {%- if product != blank and product.has_only_default_variant == false -%}
+            {%- for option in product.options_with_values -%}
+              <div class="variant-picker" data-option-index="{{ forloop.index0 }}">
+                <div class="variant-label">
+                  <span>{{ option.name }}: <strong data-selected-label style="font-family: var(--font-heading); text-transform: none; font-size: 1rem;">{{ option.selected_value }}</strong></span>
+                  {%- assign opt_name = option.name | downcase -%}
+                  {%- if opt_name contains 'size' -%}
+                    <a href="/pages/size-guide" style="text-decoration: underline; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-dusty-rose-taupe);">Size Ritual Guide</a>
+                  {%- endif -%}
+                </div>
+                <div class="swatch-group" data-option-index="{{ forloop.index0 }}">
+                  {%- for value in option.values -%}
+                    <button
+                      type="button"
+                      class="swatch-pill {% if option.selected_value == value %}active{% endif %}"
+                      data-value="{{ value | escape }}"
+                      data-option-index="{{ forloop.parentloop.index0 }}"
+                    >
+                      {{ value }}
+                    </button>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- elsif product == blank -%}
+            <!-- Preview Mock Swatches -->
+            <div class="variant-picker" data-option-index="0">
+              <div class="variant-label">
+                <span>Tone: <strong data-selected-label style="font-family: var(--font-heading); text-transform: none; font-size: 1rem;">Champagne Cream</strong></span>
+              </div>
+              <div class="swatch-group" data-option-index="0">
+                <button type="button" class="swatch-pill active" data-value="Champagne Cream" data-option-index="0">Champagne Cream</button>
+                <button type="button" class="swatch-pill" data-value="Soft Nude Beige" data-option-index="0">Soft Nude Beige</button>
+                <button type="button" class="swatch-pill" data-value="Dusty Rose Taupe" data-option-index="0">Dusty Rose Taupe</button>
+                <button type="button" class="swatch-pill" data-value="Cocoa Taupe" data-option-index="0">Cocoa Taupe</button>
+              </div>
             </div>
-            <div class="swatch-group">
-              <button type="button" class="swatch-pill active" data-value="Champagne Cream">Champagne Cream</button>
-              <button type="button" class="swatch-pill" data-value="Soft Nude Beige">Soft Nude Beige</button>
-              <button type="button" class="swatch-pill" data-value="Dusty Rose Taupe">Dusty Rose Taupe</button>
-              <button type="button" class="swatch-pill" data-value="Cocoa Taupe">Cocoa Taupe</button>
-            </div>
-          </div>
 
-          <!-- Size Selector -->
-          <div class="variant-picker">
-            <div class="variant-label">
-              <span>Size: <strong data-selected-label style="font-family: var(--font-heading); text-transform: none; font-size: 1rem;">Small (S)</strong></span>
-              <a href="/pages/size-guide" style="text-decoration: underline; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-dusty-rose-taupe);">Size Ritual Guide</a>
+            <div class="variant-picker" data-option-index="1">
+              <div class="variant-label">
+                <span>Size: <strong data-selected-label style="font-family: var(--font-heading); text-transform: none; font-size: 1rem;">Small (S)</strong></span>
+                <a href="/pages/size-guide" style="text-decoration: underline; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-dusty-rose-taupe);">Size Ritual Guide</a>
+              </div>
+              <div class="swatch-group" data-option-index="1">
+                <button type="button" class="swatch-pill" data-value="XS" data-option-index="1">XS (32A-B)</button>
+                <button type="button" class="swatch-pill active" data-value="S" data-option-index="1">S (34A-C)</button>
+                <button type="button" class="swatch-pill" data-value="M" data-option-index="1">M (36A-D)</button>
+                <button type="button" class="swatch-pill" data-value="L" data-option-index="1">L (38B-D)</button>
+                <button type="button" class="swatch-pill" data-value="XL" data-option-index="1">XL (40C-DD)</button>
+              </div>
             </div>
-            <div class="swatch-group">
-              <button type="button" class="swatch-pill" data-value="XS">XS (32A-B)</button>
-              <button type="button" class="swatch-pill active" data-value="S">S (34A-C)</button>
-              <button type="button" class="swatch-pill" data-value="M">M (36A-D)</button>
-              <button type="button" class="swatch-pill" data-value="L">L (38B-D)</button>
-              <button type="button" class="swatch-pill" data-value="XL">XL (40C-DD)</button>
-            </div>
-          </div>
+          {%- endif -%}
 
           <!-- Quantity & Add to Cart -->
           <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 2.5rem;">
@@ -75,11 +100,29 @@
               <button type="button" onclick="this.previousElementSibling.stepUp()" aria-label="Increase">+</button>
             </div>
 
-            <button type="submit" name="add" class="btn btn-primary" style="flex: 1; padding: 1.1rem 2rem;" data-cart-drawer-trigger>
-              {{ 'products.product.add_to_cart' | t }}
+            <button
+              type="submit"
+              name="add"
+              class="btn btn-primary product-add-submit"
+              style="flex: 1; padding: 1.1rem 2rem;"
+              {% if product != blank and product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+            >
+              <span class="product-add-text">
+                {%- if product != blank and product.selected_or_first_available_variant.available == false -%}
+                  {{ 'products.product.sold_out' | t | default: 'Currently Resting' }}
+                {%- else -%}
+                  {{ 'products.product.add_to_cart' | t | default: 'Keep for Yourself' }}
+                {%- endif -%}
+              </span>
             </button>
           </div>
         {% endform %}
+
+        {%- if product != blank -%}
+          <script type="application/json" id="ProductVariants-{{ section.id }}">
+            {{ product.variants | json }}
+          </script>
+        {%- endif -%}
 
         <!-- Ritual Accordions -->
         <div class="details-accordion">

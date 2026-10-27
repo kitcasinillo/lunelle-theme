@@ -44,9 +44,23 @@
       {%- endif -%}
     </a>
 
-    <button type="button" class="quick-add-btn" data-quick-add data-product-id="{{ card_product.id }}" aria-label="{{ 'products.product.add_to_cart' | t }}">
+    <button
+      type="button"
+      class="quick-add-btn"
+      data-quick-add
+      data-product-id="{{ card_product.id }}"
+      data-variant-id="{{ card_product.selected_or_first_available_variant.id }}"
+      {% unless card_product.selected_or_first_available_variant.available %}disabled{% endunless %}
+      aria-label="{{ 'products.product.add_to_cart' | t }}"
+    >
       {% render 'icon-cart' %}
-      <span>{{ 'products.product.add_to_cart' | t }}</span>
+      <span>
+        {%- if card_product.selected_or_first_available_variant.available -%}
+          {{ 'products.product.add_to_cart' | t }}
+        {%- else -%}
+          {{ 'products.product.sold_out' | t }}
+        {%- endif -%}
+      </span>
     </button>
   </div>
 

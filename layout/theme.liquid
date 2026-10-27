@@ -42,6 +42,28 @@
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
 
+    <script>
+      window.Lunelle = window.Lunelle || {};
+      window.Lunelle.routes = {
+        cart_url: '{{ routes.cart_url }}',
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}',
+        all_products_url: '{{ routes.all_products_collection_url }}'
+      };
+      window.Lunelle.strings = {
+        addToCart: {{ 'products.product.add_to_cart' | t | default: 'Keep for Yourself' | json }},
+        soldOut: {{ 'products.product.sold_out' | t | default: 'Currently Resting' | json }},
+        unavailable: {{ 'products.product.unavailable' | t | default: 'Unavailable' | json }},
+        freeShippingAchieved: {{ 'sections.cart.free_shipping_achieved' | t | default: 'Complimentary domestic care delivery unlocked' | json }},
+        emptyCart: {{ 'sections.cart.empty' | t | default: 'Your bag is waiting. Treat yourself to a moment of softness.' | json }}
+      };
+      window.Lunelle.settings = {
+        freeShippingThreshold: {{ settings.free_shipping_threshold | default: 3500 }},
+        moneyFormat: {{ shop.money_format | default: '₱{{amount}}' | json }}
+      };
+    </script>
+
     {{ content_for_header }}
   </head>
 

@@ -30,37 +30,35 @@
   </div>
 
   <div class="cart-drawer-body">
-    {%- if cart.item_count > 0 -%}
-      <div class="cart-items-list">
-        {%- for item in cart.items -%}
-          <div class="cart-item" data-line-key="{{ item.key }}">
-            <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}" class="cart-item-img" width="80" height="106">
-            <div>
-              <div class="cart-item-title">{{ item.product.title }}</div>
-              {%- unless item.product.has_only_default_variant -%}
-                <div class="cart-item-variant">{{ item.variant.title }}</div>
-              {%- endunless -%}
-              <div class="quantity-stepper">
-                <button type="button" data-qty-change="-1" aria-label="Decrease">−</button>
-                <span>{{ item.quantity }}</span>
-                <button type="button" data-qty-change="1" aria-label="Increase">+</button>
-              </div>
-            </div>
-            <div style="text-align: right;">
-              <div class="cart-item-price">{{ item.final_line_price | money }}</div>
+    <div class="cart-items-list" {% if cart.item_count == 0 %}style="display: none;"{% endif %}>
+      {%- for item in cart.items -%}
+        <div class="cart-item" data-line-key="{{ item.key }}" data-line-index="{{ forloop.index }}">
+          <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}" class="cart-item-img" width="80" height="106">
+          <div style="flex: 1; min-width: 0;">
+            <div class="cart-item-title">{{ item.product.title }}</div>
+            {%- unless item.product.has_only_default_variant -%}
+              <div class="cart-item-variant">{{ item.variant.title }}</div>
+            {%- endunless -%}
+            <div class="quantity-stepper">
+              <button type="button" data-qty-change="-1" data-key="{{ item.key }}" aria-label="Decrease">−</button>
+              <span data-qty-value>{{ item.quantity }}</span>
+              <button type="button" data-qty-change="1" data-key="{{ item.key }}" aria-label="Increase">+</button>
             </div>
           </div>
-        {%- endfor -%}
-      </div>
-    {%- else -%}
-      <div style="text-align: center; padding: 4rem 1rem;">
-        {% render 'icon-lotus', width: 44, height: 44, color: '#B9968A' %}
-        <p style="margin-top: 1.5rem; font-style: italic; color: var(--color-cocoa-taupe);">{{ 'sections.cart.empty' | t }}</p>
-        <a href="{{ routes.all_products_collection_url }}" class="btn btn-secondary" style="margin-top: 1rem;">
-          {{ 'sections.cart.explore' | t }}
-        </a>
-      </div>
-    {%- endif -%}
+          <div style="text-align: right;">
+            <div class="cart-item-price">{{ item.final_line_price | money }}</div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="cart-drawer-empty" style="text-align: center; padding: 4rem 1rem; {% if cart.item_count > 0 %}display: none;{% endif %}">
+      {% render 'icon-lotus', width: 44, height: 44, color: '#B9968A' %}
+      <p style="margin-top: 1.5rem; font-style: italic; color: var(--color-cocoa-taupe);">{{ 'sections.cart.empty' | t }}</p>
+      <a href="{{ routes.all_products_collection_url }}" class="btn btn-secondary" style="margin-top: 1rem;">
+        {{ 'sections.cart.explore' | t }}
+      </a>
+    </div>
 
     {%- if settings.enable_gift_note -%}
       <div class="cart-gift-note">
@@ -70,18 +68,16 @@
     {%- endif -%}
   </div>
 
-  {%- if cart.item_count > 0 -%}
-    <div class="cart-drawer-footer">
-      <div class="cart-subtotal-row">
-        <span>{{ 'sections.cart.subtotal' | t }}</span>
-        <span>{{ cart.total_price | money }}</span>
-      </div>
-      <p class="cart-taxes-note">{{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t }}</p>
-      <form action="{{ routes.cart_url }}" method="post">
-        <button type="submit" name="checkout" class="btn btn-primary" style="width: 100%;">
-          {{ 'sections.cart.checkout' | t }}
-        </button>
-      </form>
+  <div class="cart-drawer-footer" {% if cart.item_count == 0 %}style="display: none;"{% endif %}>
+    <div class="cart-subtotal-row">
+      <span>{{ 'sections.cart.subtotal' | t }}</span>
+      <span class="cart-subtotal-price">{{ cart.total_price | money }}</span>
     </div>
-  {%- endif -%}
+    <p class="cart-taxes-note">{{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t }}</p>
+    <form action="{{ routes.cart_url }}" method="post">
+      <button type="submit" name="checkout" class="btn btn-primary" style="width: 100%;">
+        {{ 'sections.cart.checkout' | t }}
+      </button>
+    </form>
+  </div>
 </div>

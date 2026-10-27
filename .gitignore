@@ -17,3 +17,8 @@ desktop.ini
 # Non-theme assets (keep locally, ignore from Shopify GitHub sync)
 branding guide/
 *.zip
+tools/
+scripts/
+tasks/
+*.audit.json
+
