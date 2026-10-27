@@ -6,9 +6,32 @@
         <div class="product-main-image">
           {%- assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
           {%- if featured_media -%}
-            <img src="{{ featured_media | image_url: width: 1000 }}" alt="{{ product.title | escape }}" id="ProductMainImage-{{ section.id }}" width="1000" height="1333">
+            <img
+              src="{{ featured_media | image_url: width: 1000 }}"
+              srcset="
+                {{ featured_media | image_url: width: 500 }} 500w,
+                {{ featured_media | image_url: width: 750 }} 750w,
+                {{ featured_media | image_url: width: 1000 }} 1000w,
+                {{ featured_media | image_url: width: 1400 }} 1400w
+              "
+              sizes="(max-width: 768px) 100vw, 50vw"
+              alt="{{ product.title | escape }}"
+              id="ProductMainImage-{{ section.id }}"
+              width="1000"
+              height="1333"
+              loading="eager"
+              fetchpriority="high"
+            >
           {%- else -%}
-            <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?q=80&w=1000&auto=format&fit=crop" alt="{{ product.title | default: 'The Dawn Silk Bralette' | escape }}" id="ProductMainImage-{{ section.id }}" width="1000" height="1333">
+            <img
+              src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?q=80&w=1000&auto=format&fit=crop"
+              alt="{{ product.title | default: 'The Dawn Silk Bralette' | escape }}"
+              id="ProductMainImage-{{ section.id }}"
+              width="1000"
+              height="1333"
+              loading="eager"
+              fetchpriority="high"
+            >
           {%- endif -%}
         </div>
 
@@ -16,7 +39,15 @@
           <div class="product-thumb-row">
             {%- for media in product.media limit: 4 -%}
               <div class="product-thumb {% if forloop.first %}active{% endif %}" data-full-src="{{ media | image_url: width: 1000 }}">
-                <img src="{{ media | image_url: width: 250 }}" alt="{{ media.alt | default: product.title | escape }}" width="250" height="250" loading="lazy">
+                <img
+                  src="{{ media | image_url: width: 250 }}"
+                  srcset="{{ media | image_url: width: 150 }} 150w, {{ media | image_url: width: 250 }} 250w"
+                  sizes="80px"
+                  alt="{{ media.alt | default: product.title | escape }}"
+                  width="250"
+                  height="250"
+                  loading="lazy"
+                >
               </div>
             {%- endfor -%}
           </div>

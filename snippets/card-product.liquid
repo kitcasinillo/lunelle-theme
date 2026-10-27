@@ -22,21 +22,35 @@
     <a href="{{ card_product.url }}" class="product-card-link" aria-label="{{ card_product.title | escape }}">
       {%- if featured_media -%}
         <img
-          src="{{ featured_media | image_url: width: 700 }}"
+          src="{{ featured_media | image_url: width: 720 }}"
+          srcset="
+            {{ featured_media | image_url: width: 360 }} 360w,
+            {{ featured_media | image_url: width: 540 }} 540w,
+            {{ featured_media | image_url: width: 720 }} 720w,
+            {{ featured_media | image_url: width: 900 }} 900w
+          "
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
           alt="{{ featured_media.alt | default: card_product.title | escape }}"
           class="img-primary"
           loading="lazy"
-          width="700"
-          height="933"
+          width="720"
+          height="960"
         >
         {%- if secondary_media and show_secondary_image != false -%}
           <img
-            src="{{ secondary_media | image_url: width: 700 }}"
+            src="{{ secondary_media | image_url: width: 720 }}"
+            srcset="
+              {{ secondary_media | image_url: width: 360 }} 360w,
+              {{ secondary_media | image_url: width: 540 }} 540w,
+              {{ secondary_media | image_url: width: 720 }} 720w,
+              {{ secondary_media | image_url: width: 900 }} 900w
+            "
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             alt="{{ secondary_media.alt | default: card_product.title | escape }}"
             class="img-secondary"
             loading="lazy"
-            width="700"
-            height="933"
+            width="720"
+            height="960"
           >
         {%- endif -%}
       {%- else -%}
