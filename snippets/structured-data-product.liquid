@@ -1,0 +1,52 @@
+{% comment %}
+  Lunelle Product Schema.org JSON-LD Structured Data
+  Renders comprehensive rich-snippets metadata for Google Shopping & Search.
+{% endcomment %}
+
+{%- if product != blank -%}
+  {%- assign selected_or_first_variant = product.selected_or_first_available_variant -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": {{ product.title | json }},
+    "url": {{ request.origin | append: product.url | json }},
+    {%- if product.featured_media -%}
+      "image": [
+        {{ product.featured_media | image_url: width: 1200 | prepend: "https:" | json }}
+      ],
+    {%- endif -%}
+    "description": {{ product.description | strip_html | truncatewords: 50 | json }},
+    {%- if selected_or_first_variant.sku != blank -%}
+      "sku": {{ selected_or_first_variant.sku | json }},
+    {%- else -%}
+      "sku": {{ selected_or_first_variant.id | json }},
+    {%- endif -%}
+    "brand": {
+      "@type": "Brand",
+      "name": "Lunelle"
+    },
+    "offers": [
+      {%- for variant in product.variants -%}
+        {
+          "@type": "Offer",
+          "name": {{ variant.title | json }},
+          "price": {{ variant.price | divided_by: 100.0 | json }},
+          "priceCurrency": {{ cart.currency.iso_code | default: 'PHP' | json }},
+          "priceValidUntil": "{{ 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d' }}",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+          "url": {{ request.origin | append: variant.url | json }},
+          {%- if variant.sku != blank -%}
+            "sku": {{ variant.sku | json }},
+          {%- endif -%}
+          "seller": {
+            "@type": "Organization",
+            "name": {{ shop.name | json }}
+          }
+        }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  }
+  </script>
+{%- endif -%}
