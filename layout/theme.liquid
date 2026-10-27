@@ -22,9 +22,20 @@
       {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
-    {% endif %}
+    {%- capture meta_description -%}
+      {%- if page_description -%}
+        {{ page_description | escape }}
+      {%- elsif template.name == 'index' -%}
+        {{ shop.description | default: 'Lunelle &ndash; Luxury Mulberry Silk Intimates and Wire-Free Loungewear designed for self-reclamation, motherhood rituals, and quiet confidence.' | escape }}
+      {%- elsif template.name == 'collection' -%}
+        {{ collection.description | strip_html | truncatewords: 30 | default: 'Explore curated wire-free silk bralettes, slips, and luxury loungewear crafted with pure intention by Lunelle.' | escape }}
+      {%- elsif template.name == 'product' -%}
+        {{ product.description | strip_html | truncatewords: 30 | escape }}
+      {%- else -%}
+        {{ shop.description | default: 'To remind women that they, too, deserve beauty, softness, and care. Handcrafted luxury silk intimates by Lunelle.' | escape }}
+      {%- endif -%}
+    {%- endcapture -%}
+    <meta name="description" content="{{ meta_description | strip }}">
 
     {% render 'social-meta-tags' %}
 
