@@ -1,0 +1,83 @@
+{
+  "sections": {
+    "main_faq": {
+      "type": "faq-accordion",
+      "blocks": {
+        "faq_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do Lunelle's wire-free designs provide gentle support?",
+            "answer": "<p>Lunelle designs lingerie that honors a woman's natural silhouette. Instead of rigid underwires that pinch or restrict, we utilize precision anatomical cuts, supportive underband tension, and premium double-lined fabrics that provide tender, uplifted structure with zero pressure points.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is the recommended Care Ritual for delicate intimate garments?",
+            "answer": "<p>To preserve the delicate luster, elasticity, and softness of your pieces: hand wash gently in cool water using mild pH-neutral detergent. Avoid harsh wringing or machine spin drying. Gently press between a soft towel to remove excess moisture and line dry flat in the shade away from direct sunlight.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Where do you ship and what are the delivery timeframes?",
+            "answer": "<p>We deliver nationwide across the Philippines. Metro Manila orders typically arrive within 2 to 4 business days. Provincial areas in Luzon, Visayas, and Mindanao arrive within 4 to 7 business days via our designated courier partners (EasyShip / J&T / LBC). All orders are accompanied by real-time tracking updates.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is domestic shipping complimentary?",
+            "answer": "<p>Yes. All domestic orders with a subtotal of ₱3,500.00 PHP or higher automatically qualify for complimentary domestic delivery applied directly at checkout.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is the return and hygiene policy for intimate apparel?",
+            "answer": "<p>Under Philippine consumer protection and sanitary guidelines (RA 7394), intimate undergarments worn directly against delicate skin cannot be returned once tried on, washed, or unsealed. We provide a 7-calendar-day inspection window from delivery receipt for any verified manufacturing flaws or dispatch discrepancies. Approved returns receive a 1-to-1 replacement or Store Credit valid for 12 months.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How will my order be packaged? Can I include a gift message?",
+            "answer": "<p>Every Lunelle order is packaged as an intimate gift to yourself. Garments are wrapped in soft tissue paper and housed in a discreet, elegant exterior box. During checkout, you can add a whisper gift note that will be printed on our signature cardstock.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6"
+      ],
+      "settings": {
+        "eyebrow": "Care & Inquiries",
+        "heading": "Frequently Asked Questions & Care Rituals",
+        "subheading": "Everything you need to know about our wire-free intimate fit, delicate care rituals, and domestic courier shipping."
+      }
+    },
+    "quote": {
+      "type": "editorial-quote",
+      "settings": {
+        "quote": "Every piece reminds you that you, too, deserve beauty.",
+        "author": "The Lunelle Promise"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "Notes on Softness",
+        "subheading": "Receive private invitations, quiet musings, and early access to upcoming collections."
+      }
+    }
+  },
+  "order": [
+    "main_faq",
+    "quote",
+    "newsletter"
+  ]
+}
